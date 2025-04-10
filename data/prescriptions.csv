@@ -1,0 +1,77 @@
+name,description,efficacy,materials,efficacy_categories
+四君子汤,Classical formula to tonify Qi,Qi deficiency,黄芪:10g,党参:10g,白术:10g,茯苓:10g,甘草:5g,Tonifying
+四物汤,Classical women's tonic,Blood deficiency,当归:9g,白芍:9g,川芎:6g,熟地黄:9g,Blood tonifying,Women's health
+六味地黄丸,Nourishes Kidney Yin,Kidney Yin deficiency,熟地黄:24g,山药:12g,山茱萸:9g,茯苓:9g,泽泻:9g,丹皮:9g,Tonifying,Women's health
+八珍汤,Comprehensive blood and Qi tonic,Qi and Blood deficiency,党参:10g,白术:10g,茯苓:10g,甘草:5g,当归:10g,熟地黄:10g,白芍:10g,川芎:5g,Tonifying,Blood tonifying
+补中益气汤,Raises spleen Qi,Spleen Qi deficiency with sinking,黄芪:15g,党参:10g,白术:10g,当归:10g,陈皮:6g,柴胡:3g,升麻:3g,甘草:5g,Tonifying,Qi raising
+生脉散,Generates pulse and prevents collapse,Qi and Yin deficiency,人参:9g,麦门冬:15g,五味子:6g,Tonifying,Emergency
+玉屏风散,Strengthens exterior deficiency,Wei Qi deficiency,黄芪:15g,白术:10g,防风:10g,Tonifying,Wind-dispelling
+理中丸,Warms middle jiao,Spleen Yang deficiency,人参:6g,干姜:6g,白术:6g,甘草:6g,Warming,Digestive
+当归四逆汤,Warms channels and nourishes blood,Blood deficiency with cold extremities,当归:9g,桂枝:6g,白芍:9g,细辛:3g,通草:3g,大枣:6g,甘草:6g,Warming,Blood tonifying
+桂枝汤,Releases exterior for wind-cold,Wind-cold invasion,桂枝:9g,白芍:9g,生姜:9g,大枣:6g,甘草:6g,Wind-dispelling,Warming
+麻黄汤,Strong exterior release for cold,Wind-cold invasion with fever,麻黄:9g,桂枝:6g,杏仁:9g,甘草:3g,Wind-dispelling,Warming
+小青龙汤,Dispels cold and transforms phlegm,Wind-cold with internal phlegm,麻黄:6g,桂枝:6g,干姜:3g,细辛:3g,五味子:6g,半夏:9g,白芍:6g,甘草:3g,Wind-dispelling,Phlegm-resolving
+葛根汤,Releases exterior and relieves neck,Wind-cold with neck stiffness,葛根:15g,麻黄:6g,桂枝:6g,白芍:6g,生姜:6g,大枣:6g,甘草:6g,Wind-dispelling,Muscle-relaxing
+大青龙汤,Strong exterior release with sweating,Wind-cold with severe chills,麻黄:9g,桂枝:6g,生姜:9g,杏仁:9g,石膏:30g,甘草:6g,大枣:6g,Wind-dispelling,Heat-clearing
+九味羌活汤,Dispels wind-cold-dampness,Wind-cold-damp invasion,羌活:6g,防风:6g,苍术:6g,细辛:3g,川芎:6g,白芷:6g,生姜:6g,甘草:6g,黄芩:6g,Wind-dispelling,Dampness-dispelling
+银翘散,Releases wind-heat and detoxifies,Wind-heat invasion,金银花:9g,连翘:9g,薄荷:6g,竹叶:6g,牛蒡子:9g,桔梗:6g,甘草:3g,淡豆豉:6g,芦根:9g,Wind-dispelling,Heat-clearing
+桑菊饮,Mild release of wind-heat,Wind-heat affecting lungs,桑叶:9g,菊花:9g,杏仁:6g,桔梗:6g,连翘:9g,薄荷:6g,竹叶:6g,甘草:3g,Wind-dispelling,Heat-clearing
+麻杏石甘汤,Clears lung heat,Lung heat with cough,麻黄:9g,杏仁:9g,石膏:15g,甘草:6g,Heat-clearing,Phlegm-resolving
+白虎汤,Clears severe heat,Intense heat with thirst,石膏:30g,知母:9g,粳米:15g,甘草:6g,Heat-clearing,Fever-reducing
+黄连解毒汤,Drains intense heat,Intense fire poison,黄连:6g,黄芩:9g,黄柏:6g,栀子:9g,Heat-clearing,Detoxifying
+清营汤,Clears heat from the nutritive level,Heat in nutritive level,水牛角:30g,生地黄:15g,玄参:9g,黄连:3g,竹叶:6g,丹参:9g,麦冬:9g,Heat-clearing,Blood-cooling
+清瘟败毒饮,Clears epidemic heat,Epidemic febrile disease,柴胡:9g,黄芩:9g,石膏:15g,知母:9g,丹皮:9g,赤芍:9g,生地黄:15g,玄参:9g,甘草:6g,Heat-clearing,Detoxifying
+三黄石膏汤,Clears internal heat,Intense interior heat,黄连:6g,黄芩:9g,黄柏:9g,石膏:30g,Heat-clearing,Fever-reducing
+龙胆泻肝汤,Clears Liver and Gallbladder heat,Liver/Gallbladder damp-heat,龙胆草:9g,黄芩:9g,栀子:9g,泽泻:9g,木通:9g,车前子:9g,当归:9g,生地黄:9g,柴胡:9g,甘草:6g,Heat-clearing,Liver-clearing
+泻白散,Clears Lung heat,Lung heat cough,桑白皮:9g,地骨皮:9g,甘草:3g,Heat-clearing,Cough-relieving
+泻黄散,Clears Spleen heat,Spleen heat with bleeding,防风:6g,桑白皮:9g,甘草:3g,Heat-clearing,Bleeding-stopping
+连梅汤,Clears summer heat,Summer heat with diarrhea,黄连:6g,乌梅:9g,Heat-clearing,Digestive
+茵陈蒿汤,Clears damp-heat jaundice,Damp-heat jaundice,茵陈:18g,栀子:9g,大黄:6g,Heat-clearing,Dampness-dispelling
+五苓散,Promotes urination and resolves dampness,Water retention,泽泻:15g,猪苓:9g,茯苓:15g,白术:9g,桂枝:6g,Dampness-dispelling,Diuretic
+猪苓汤,Promotes urination with nourishing yin,Yin deficiency with edema,猪苓:9g,泽泻:9g,茯苓:9g,滑石:9g,阿胶:6g,Dampness-dispelling,Yin-nourishing
+平胃散,Dries dampness and harmonizes Stomach,Damp accumulation in middle jiao,苍术:15g,厚朴:9g,陈皮:6g,甘草:3g,生姜:3slices,大枣:3pieces,Dampness-dispelling,Digestive
+藿香正气散,Releases exterior and transforms dampness,Summer dampness,藿香:9g,紫苏叶:6g,白芷:6g,半夏:6g,陈皮:6g,茯苓:9g,厚朴:6g,大腹皮:6g,甘草:6g,生姜:3slices,大枣:3pieces,Dampness-dispelling,Wind-dispelling
+二陈汤,Dries dampness and transforms phlegm,Phlegm-dampness,陈皮:9g,半夏:9g,茯苓:12g,甘草:3g,Phlegm-resolving,Dampness-dispelling
+温胆汤,Harmonizes Gallbladder and transforms phlegm,Phlegm-heat affecting sleep,陈皮:9g,半夏:9g,茯苓:12g,竹茹:9g,枳实:9g,甘草:3g,Phlegm-resolving,Spirit-calming
+半夏白术天麻汤,Tonifies Spleen and transforms phlegm,Phlegm with dizziness,半夏:9g,白术:9g,天麻:9g,橘红:9g,茯苓:9g,甘草:3g,生姜:5slices,Phlegm-resolving,Dizziness-relieving
+小柴胡汤,Harmonizes shaoyang,Shaoyang syndrome,柴胡:12g,黄芩:9g,人参:9g,半夏:9g,甘草:6g,生姜:9g,大枣:3pieces,Harmonizing,Fever-reducing
+四逆散,Harmonizes liver and spleen,Liver invading spleen,柴胡:9g,枳实:9g,芍药:9g,甘草:9g,Harmonizing,Liver-soothing
+黄芪桂枝五物汤,Warms yang and nourishes blood,Yang deficiency with blood stasis,黄芪:15g,桂枝:9g,白芍:9g,生姜:9g,大枣:6g,Warming,Blood-nourishing
+炙甘草汤,Regulates and tonifies heart qi,Heart qi and blood deficiency,甘草(炙):12g,人参:9g,桂枝:9g,麦冬:9g,阿胶:9g,生姜:9g,大枣:9g,麻仁:9g,Tonifying,Heart-regulating
+桂枝加芍药汤,Adjusts ying wei and relieves cramping,Muscle cramps,桂枝:9g,白芍:12g,生姜:9g,大枣:6g,甘草:6g,Muscle-relaxing,Wind-dispelling
+天麻钩藤饮,Extinguishes liver wind,Liver yang rising with dizziness,天麻:9g,钩藤:9g,石决明:15g,牛膝:9g,栀子:9g,黄芩:9g,杜仲:9g,益母草:9g,桑寄生:9g,夜交藤:9g,朱茯神:9g,黄芪:15g,Wind-extinguishing,Liver-calming
+大承气汤,Strongly purges heat accumulation,Intense heat with constipation,大黄:12g,厚朴:12g,枳实:12g,芒硝:9g,Heat-clearing,Laxative
+小承气汤,Mildly purges heat accumulation,Mild heat with constipation,大黄:12g,厚朴:9g,枳实:9g,Heat-clearing,Laxative
+调胃承气汤,Mildly purges stomach heat,Stomach heat with constipation,大黄:12g,芒硝:6g,甘草:6g,Heat-clearing,Laxative
+增液承气汤,Purges heat and generates fluids,Heat with dry constipation,大黄:6-12g,芒硝:6g,玄参:15g,麦冬:9g,Heat-clearing,Laxative
+济川煎,Moistens intestines for constipation,Dry constipation,火麻仁:15g,郁李仁:9g,厚朴:9g,枳实:9g,芒硝:9g,大黄:9g,Laxative,Intestine-moistening
+保和丸,Promotes digestion,Food stagnation,神曲:9g,山楂:9g,茯苓:9g,半夏:9g,陈皮:9g,连翘:9g,莱菔子:9g,Digestive,Food-dispersing
+大黄槟榔丸,Reduces food accumulation,Severe food accumulation,大黄:9g,槟榔:9g,厚朴:6g,枳实:6g,芒硝:6g,Digestive,Food-dispersing
+枳实消痞丸,Disperses abdominal masses,Abdominal distention and masses,枳实:9g,厚朴:9g,黄连:9g,黄芩:9g,陈皮:5g,半夏:9g,Digestive,Qi-regulating
+越鞠丸,Regulates qi in all directions,Qi stagnation,苍术:6g,厚朴:6g,陈皮:6g,香附:6g,川芎:6g,Qi-regulating,Digestive
+柴胡疏肝散,Soothes liver and regulates qi,Liver qi stagnation,柴胡:9g,陈皮:6g,香附:6g,川芎:4g,白芍:6g,枳壳:5g,甘草:3g,Qi-regulating,Liver-soothing
+逍遥散,Soothes liver and strengthens spleen,Liver qi stagnation with heat,柴胡:9g,当归:9g,白芍:9g,白术:9g,茯苓:9g,甘草:3g,薄荷:3g,生姜:3slices,Liver-soothing,Spleen-strengthening
+四磨汤,Strongly moves qi,Severe qi stagnation,枳壳:9g,乌药:6g,木香:6g,槟榔:6g,Qi-regulating,Pain-relieving
+暖肝煎,Warms liver channel,Liver cold with pain,吴茱萸:6g,当归:6g,川芎:3g,小茴香:6g,高良姜:6g,肉桂:3g,Warming,Liver-soothing
+金铃子散,Alleviates liver pain,Liver pain with stagnation,川楝子:6g,延胡索:6g,Pain-relieving,Liver-soothing
+五积散,Dispels cold from five organs,Cold accumulation,麻黄:6g,桂枝:6g,白芍:9g,炮姜:9g,苍术:9g,厚朴:9g,陈皮:9g,半夏:9g,茯苓:9g,甘草:6g,川芎:6g,干姜:6g,白芷:6g,Warming,Cold-dispelling
+益肾汤,Nourishes kidney yin,Kidney yin deficiency,熟地黄:12g,龟板胶:9g,鹿角胶:9g,阿胶:9g,炙甘草:6g,山药:15g,山萸肉:12g,茯苓:9g,丹皮:6g,泽泻:6g,Tonifying,Yin-nourishing
+阳和汤,Warms kidney yang,Kidney yang deficiency,熟地黄:24g,鹿角胶:15g,麻黄:6g,肉桂:6g,炮姜:6g,白芥子:6g,甘草:6g,Warming,Yang-tonifying
+右归丸,Strongly tonifies kidney yang,Severe kidney yang deficiency,熟地黄:24g,山药:12g,山茱萸:12g,杜仲:9g,肉桂:6g,附子:6g,鹿角胶:12g,菟丝子:12g,枸杞子:12g,当归:9g,Warming,Yang-tonifying
+左归丸,Nourishes kidney yin,Severe kidney yin deficiency,熟地黄:24g,山药:12g,山茱萸:12g,枸杞子:12g,菟丝子:12g,鹿角胶:12g,龟板胶:12g,牛膝:9g,Tonifying,Yin-nourishing
+杞菊地黄丸,Nourishes kidney and liver,Kidney and liver yin deficiency,熟地黄:24g,山药:12g,山茱萸:9g,茯苓:9g,泽泻:9g,丹皮:9g,枸杞子:12g,菊花:9g,Tonifying,Yin-nourishing
+麦味地黄丸,Nourishes kidney and clears heart,Kidney yin deficiency with heart heat,熟地黄:24g,山药:12g,山茱萸:9g,茯苓:9g,泽泻:9g,丹皮:9g,麦冬:12g,五味子:9g,Tonifying,Yin-nourishing
+当归芍药散,Nourishes blood and dispels dampness,Blood deficiency with dampness,当归:9g,白芍:9g,茯苓:9g,白术:9g,泽泻:9g,川芎:6g,Blood-nourishing,Dampness-dispelling
+膈下逐瘀汤,Breaks up blood stasis below diaphragm,Blood stasis in lower abdomen,当归:9g,桃仁:9g,红花:9g,赤芍:6g,枳壳:6g,延胡索:6g,丹参:12g,甘草:3g,Blood-invigorating,Pain-relieving
+血府逐瘀汤,Breaks up blood stasis in chest,Blood stasis in upper body,桃仁:9g,红花:6g,当归:9g,生地黄:9g,牛膝:9g,川芎:5g,赤芍:6g,柴胡:3g,桔梗:6g,枳壳:6g,甘草:3g,Blood-invigorating,Chest-opening
+复元活血汤,Invigorates blood after trauma,Blood stasis due to trauma,当归:9g,川芎:6g,白芍:6g,香附:6g,红花:6g,乳香:6g,没药:6g,五灵脂:6g,地龙:6g,甘草:6g,Blood-invigorating,Pain-relieving
+桃核承气汤,Breaks up blood stasis with purging,Blood stasis with heat,桃仁:12g,大黄:12g,芒硝:9g,桂枝:6g,甘草:6g,Blood-invigorating,Heat-clearing
+丹栀逍遥散,Soothes liver and clears heat,Liver qi stagnation with heat,柴胡:9g,当归:9g,白芍:9g,白术:9g,茯苓:9g,甘草:3g,薄荷:3g,栀子:6g,丹皮:6g,Liver-soothing,Heat-clearing
+柴胡加龙骨牡蛎汤,Harmonizes shaoyang and calms spirit,Shaoyang syndrome with anxiety,柴胡:12g,黄芩:9g,人参:9g,半夏:9g,甘草:6g,生姜:9g,大枣:3pieces,龙骨:15g,牡蛎:15g,Harmonizing,Spirit-calming
+甘麦大枣汤,Nourishes heart and calms spirit,Heart deficiency with anxiety,甘草:6g,小麦:30g,大枣:12pieces,Spirit-calming,Heart-nourishing
+温胆汤加味,Transforms phlegm and calms spirit,Phlegm-heat disturbing heart,陈皮:9g,半夏:9g,茯苓:12g,竹茹:9g,枳实:9g,甘草:3g,酸枣仁:9g,黄连:3g,Spirit-calming,Phlegm-resolving
+朱砂安神丸,Calms spirit with heavy settling,Anxiety with insomnia,朱砂:3g,黄连:3g,生地黄:15g,当归:9g,甘草:3g,Spirit-calming,Heart-clearing
+天王补心丹,Nourishes heart and calms spirit,Heart deficiency with anxiety,生地黄:15g,熟地黄:15g,当归:9g,丹参:9g,柏子仁:5g,酸枣仁:5g,远志:5g,天冬:9g,麦冬:9g,五味子:5g,朱砂:3g,炙甘草:5g,Spirit-calming,Heart-nourishing
+大定风珠,Anchors floating yang,Internal wind with sweating,龙骨:15g,牡蛎:15g,阿胶:9g,麻黄根:6g,白芍:15g,生地黄:30g,牛膝:9g,石决明:15g,Wind-extinguishing,Yin-nourishing
+玉女煎,Clears heat and nourishes yin,Heat with yin deficiency,石膏:30g,熟地黄:12g,麦冬:9g,牛膝:9g,知母:6g,Heat-clearing,Yin-nourishing
+当归六黄汤,Clears heat and nourishes yin,Deficiency heat,当归:9g,生地黄:15g,熟地黄:12g,黄连:3g,黄芩:9g,黄柏:9g,黄芪:15g,Heat-clearing,Yin-nourishing

@@ -1,0 +1,195 @@
+name,pinyin,english_name,province_origin,property,flavor,meridian,description
+人参,Ren Shen,Ginseng,Jilin,warm,sweet,Lung/Spleen,Tonifies Qi and promotes blood production
+黄芪,Huang Qi,Astragalus,Gansu,warm,sweet,Spleen/Lung,Tonifies Qi and raises yang
+白术,Bai Zhu,White Atractylodes,Zhejiang,warm,bitter/sweet,Spleen/Stomach,Strengthens the Spleen and dries dampness
+党参,Dang Shen,Codonopsis,Shanxi,neutral,sweet,Spleen/Lung,Tonifies the middle jiao and Qi
+茯苓,Fu Ling,Poria,Anhui,neutral,sweet/bland,Heart/Spleen/Kidney,Drains dampness and strengthens the Spleen
+甘草,Gan Cao,Licorice,Inner Mongolia,neutral,sweet,All 12 meridians,Tonifies Spleen Qi and harmonizes herbs
+当归,Dang Gui,Angelica,Gansu,warm,sweet/pungent,Liver/Heart/Spleen,Tonifies blood and regulates menstruation
+熟地黄,Shu Di Huang,Prepared Rehmannia,Henan,warm,sweet,Liver/Kidney,Tonifies blood and nourishes Yin
+白芍,Bai Shao,White Peony,Anhui,cool,bitter/sour,Liver/Spleen,Nourishes blood and regulates Liver Qi
+川芎,Chuan Xiong,Szechuan Lovage,Sichuan,warm,pungent,Liver/Gallbladder,Invigorates blood and promotes Qi circulation
+生地黄,Sheng Di Huang,Raw Rehmannia,Henan,cold,sweet/bitter,Heart/Liver/Kidney,Clears heat and cools blood
+红花,Hong Hua,Safflower,Sichuan,warm,pungent,Heart/Liver,Invigorates blood and unblocks menstruation
+丹参,Dan Shen,Red Sage,Sichuan,cool,bitter,Heart/Pericardium/Liver,Invigorates blood and clears heat
+牛膝,Niu Xi,Achyranthes,Henan,neutral,bitter/sour,Liver/Kidney,Invigorates blood and strengthens tendons
+三七,San Qi,Notoginseng,Yunnan,warm,sweet/bitter,Liver/Stomach,Stops bleeding and reduces swelling
+黄连,Huang Lian,Coptis,Sichuan,cold,bitter,Heart/Liver/Stomach,Clears heat and drains dampness
+黄芩,Huang Qin,Scutellaria,Hebei,cold,bitter,Lung/Gallbladder/Stomach,Clears heat and dries dampness
+黄柏,Huang Bai,Phellodendron,Sichuan,cold,bitter,Kidney/Bladder,Clears heat and dries dampness
+栀子,Zhi Zi,Gardenia,Jiangxi,cold,bitter,Heart/Lung/Triple Burner,Clears heat and eliminates irritability
+连翘,Lian Qiao,Forsythia,Shanxi,cold,bitter,Lung/Heart/Gallbladder,Clears heat and detoxifies
+金银花,Jin Yin Hua,Honeysuckle,Shandong,cold,sweet,Lung/Stomach,Clears heat and detoxifies
+蒲公英,Pu Gong Ying,Dandelion,Heilongjiang,cold,bitter/sweet,Liver/Stomach,Clears heat and detoxifies
+板蓝根,Ban Lan Gen,Isatis,Hebei,cold,bitter,Heart/Stomach,Clears heat and detoxifies
+柴胡,Chai Hu,Bupleurum,Inner Mongolia,cool,bitter/pungent,Gallbladder/Liver/Pericardium,Relieves exterior and alleviates depression
+前胡,Qian Hu,Peucedanum,Hebei,cool,bitter/pungent,Lung,Transforms phlegm and relieves cough
+桔梗,Jie Geng,Platycodon,Shanxi,neutral,bitter/pungent,Lung,Opens the Lung and expels phlegm
+半夏,Ban Xia,Pinellia,Sichuan,warm,pungent,Spleen/Stomach/Lung,Dries dampness and transforms phlegm
+天南星,Tian Nan Xing,Arisaema,Guizhou,warm,pungent/toxic,Liver/Lung/Spleen,Dispels wind-phlegm and reduces swelling
+陈皮,Chen Pi,Tangerine Peel,Guangdong,warm,pungent/bitter,Spleen/Lung,Regulates Qi and dries dampness
+枳实,Zhi Shi,Immature Bitter Orange,Jiangxi,cool,bitter/pungent,Spleen/Stomach,Breaks up stagnation and moves Qi
+香附,Xiang Fu,Cyperus,Guangdong,neutral,pungent/sweet/bitter,Liver/Triple Burner,Regulates Qi and alleviates pain
+木香,Mu Xiang,Costus,Guangxi,warm,pungent/bitter,Spleen/Stomach/Large Intestine,Promotes Qi movement and alleviates pain
+砂仁,Sha Ren,Amomum,Guangdong,warm,pungent,Spleen/Stomach,Promotes digestion and resolves dampness
+豆蔻,Dou Kou,Cardamom,Guangdong,warm,pungent,Spleen/Stomach,Warms the middle and dispels cold
+乌药,Wu Yao,Lindera,Guangdong,warm,pungent,Kidney/Bladder/Spleen,Warms the Kidney and moves Qi
+川楝子,Chuan Lian Zi,Melia,Sichuan,cold,bitter/pungent,Liver/Gallbladder,Regulates Qi and alleviates pain
+良姜,Liang Jiang,Galangal,Guangdong,hot,pungent,Spleen/Stomach,Warms the middle and dispels cold
+干姜,Gan Jiang,Dried Ginger,Sichuan,hot,pungent,Spleen/Stomach/Heart/Lung,Warms the interior and dispels cold
+肉桂,Rou Gui,Cinnamon,Guangxi,hot,pungent/sweet,Kidney/Spleen/Heart/Liver,Warms the Kidney and Spleen
+吴茱萸,Wu Zhu Yu,Evodia,Sichuan,hot,bitter/pungent,Liver/Spleen/Kidney,Warms the middle and dispels cold
+小茴香,Xiao Hui Xiang,Fennel,Sichuan,warm,pungent/sweet,Liver/Kidney/Spleen,Warms the Kidney and disperses cold
+花椒,Hua Jiao,Sichuan Pepper,Sichuan,hot,pungent,Spleen/Stomach,Warms the Spleen and dispels cold
+马兜铃,Ma Dou Ling,Aristolochia,Guangxi,cool,bitter,Lung/Large Intestine,Clears heat and resolves toxicity
+细辛,Xi Xin,Asarum,Liaoning,warm,pungent,Lung/Kidney,Dispels wind-cold and alleviates pain
+麻黄,Ma Huang,Ephedra,Inner Mongolia,warm,pungent,Lung/Bladder,Releases exterior and promotes sweating
+紫苏,Zi Su,Perilla,Sichuan,warm,pungent,Lung/Spleen,Releases exterior and regulates Qi
+防风,Fang Feng,Siler,Liaoning,warm,pungent/sweet,Bladder/Spleen/Liver,Releases exterior and relieves dampness
+羌活,Qiang Huo,Notopterygium,Sichuan,warm,pungent/bitter,Bladder/Kidney,Dispels wind-cold and alleviates pain
+独活,Du Huo,Pubescent Angelica,Sichuan,warm,pungent/bitter,Liver/Kidney/Bladder,Dispels wind-dampness and alleviates pain
+藁本,Gao Ben,Ligusticum,Sichuan,warm,pungent,Bladder,Dispels wind-cold and alleviates pain
+白芷,Bai Zhi,Angelica Dahurica,Hebei,warm,pungent,Lung/Stomach/Large Intestine,Releases exterior and alleviates pain
+蔓荆子,Man Jing Zi,Vitex,Shandong,cool,bitter/pungent,Liver/Gallbladder,Dispels wind and clears the head
+薄荷,Bo He,Mint,Jiangsu,cool,pungent,Lung/Liver,Releases exterior and clears the head
+桑叶,Sang Ye,Mulberry Leaf,Henan,cold,bitter/sweet,Lung/Liver,Disperses wind-heat and clears Lung heat
+菊花,Ju Hua,Chrysanthemum,Anhui,cool,bitter/sweet,Lung/Liver,Disperses wind-heat and clears Liver heat
+葛根,Ge Gen,Kudzu,Shaanxi,cool,sweet/pungent,Spleen/Stomach,Releases muscle layer and promotes eruption
+牡丹皮,Mu Dan Pi,Tree Peony Bark,Anhui,cool,bitter/pungent,Heart/Liver/Kidney,Clears heat and cools blood
+赤芍,Chi Shao,Red Peony,Sichuan,cool,bitter,Liver,Clears heat and cools blood
+玄参,Xuan Shen,Scrophularia,Shaanxi,cold,bitter/sweet/salty,Lung/Stomach/Kidney,Clears heat and nourishes Yin
+大青叶,Da Qing Ye,Isatis Leaf,Anhui,cold,bitter,Heart/Liver,Clears heat and detoxifies
+地骨皮,Di Gu Pi,Lycium Bark,Ningxia,cold,sweet,Lung/Kidney,Clears heat and cools blood
+白鲜皮,Bai Xian Pi,Dictamnus,Heilongjiang,cold,bitter,Liver/Stomach/Bladder,Clears heat and dries dampness
+龙胆草,Long Dan Cao,Gentian,Sichuan,cold,bitter,Liver/Gallbladder,Clears heat and dries dampness
+石膏,Shi Gao,Gypsum,Shandong,cold,sweet/pungent,Lung/Stomach,Clears heat and purges fire
+知母,Zhi Mu,Anemarrhena,Hebei,cold,bitter/sweet,Lung/Stomach/Kidney,Clears heat and purges fire
+寒水石,Han Shui Shi,Glauberite,Shandong,cold,salty,Heart/Stomach,Clears heat and purges fire
+芦根,Lu Gen,Reed Rhizome,Jiangsu,cold,sweet,Lung/Stomach,Clears heat and promotes fluids
+淡竹叶,Dan Zhu Ye,Bamboo Leaf,Hunan,cold,sweet,Heart/Stomach/Small Intestine,Clears heat and promotes urination
+天花粉,Tian Hua Fen,Trichosanthes,Henan,cold,sweet/bitter,Lung/Stomach,Clears heat and generates fluids
+麦门冬,Mai Men Dong,Ophiopogon,Sichuan,cool,sweet/bitter,Lung/Heart/Stomach,Nourishes Yin and clears heat
+天门冬,Tian Men Dong,Asparagus,Shandong,cold,bitter/sweet,Lung/Kidney,Nourishes Yin and clears Lung heat
+沙参,Sha Shen,Glehnia,Shandong,cold,sweet/slightly bitter,Lung/Stomach,Nourishes Yin and clears Lung heat
+枸杞子,Gou Qi Zi,Goji Berry,Ningxia,neutral,sweet,Liver/Kidney,Nourishes Yin and tonifies Kidney
+女贞子,Nv Zhen Zi,Privet Fruit,Zhejiang,neutral,bitter/sweet,Liver/Kidney,Nourishes Yin and tonifies Kidney
+墨旱莲,Mo Han Lian,Eclipta,Guangxi,cool,sweet,Liver/Kidney,Nourishes Yin and cools blood
+旱莲草,Han Lian Cao,Eclipta,Guangxi,cool,sweet,Liver/Kidney,Nourishes Yin and cools blood
+何首乌,He Shou Wu,Polygonum,Sichuan,neutral,bitter/sweet,Liver/Kidney,Tonifies blood and strengthens tendons
+桑椹,Sang Shen,Mulberry Fruit,Henan,cold,sweet,Liver/Kidney,Nourishes Yin and tonifies Kidney
+石斛,Shi Hu,Dendrobium,Zhejiang,cold,sweet,Stomach/Kidney,Nourishes Yin and clears heat
+百合,Bai He,Lily Bulb,Gansu,cool,sweet,Lung/Heart,Nourishes Yin and calms the spirit
+山药,Shan Yao,Chinese Yam,Henan,neutral,sweet,Lung/Spleen/Kidney,Tonifies Qi and nourishes Yin
+莲子,Lian Zi,Lotus Seed,Hunan,neutral,sweet/astringent,Heart/Kidney/Spleen,Strengthens Spleen and nourishes Heart
+芡实,Qian Shi,Euryale,Jiangsu,neutral,sweet/astringent,Kidney/Spleen,Tonifies Kidney and strengthens Spleen
+薏苡仁,Yi Yi Ren,Job's Tears,Guizhou,cool,sweet/bland,Spleen/Lung/Kidney,Strengthens Spleen and drains dampness
+扁豆,Bian Dou,Hyacinth Bean,Shandong,neutral,sweet,Spleen/Stomach,Strengthens Spleen and resolves dampness
+淮山药,Huai Shan Yao,Chinese Yam,Henan,neutral,sweet,Lung/Spleen/Kidney,Tonifies Qi and nourishes Yin
+砂仁,Sha Ren,Amomum,Guangdong,warm,pungent,Spleen/Stomach,Promotes digestion and resolves dampness
+莱菔子,Lai Fu Zi,Radish Seed,Hebei,neutral,sweet/pungent,Spleen/Stomach,Promotes digestion and transforms phlegm
+谷芽,Gu Ya,Rice Sprout,Hunan,neutral,sweet,Spleen/Stomach,Promotes digestion and strengthens Spleen
+麦芽,Mai Ya,Barley Sprout,Hebei,neutral,sweet,Liver/Spleen/Stomach,Promotes digestion and resolves food stagnation
+山楂,Shan Zha,Hawthorn,Shandong,warm,sour/sweet,Spleen/Stomach/Liver,Promotes digestion and dispels blood stasis
+神曲,Shen Qu,Medicated Leaven,Sichuan,warm,sweet/pungent,Spleen/Stomach,Promotes digestion and resolves food stagnation
+麸炒神曲,Fu Chao Shen Qu,Bran-Fried Medicated Leaven,Sichuan,warm,sweet/pungent,Spleen/Stomach,Promotes digestion and resolves food stagnation
+鸡内金,Ji Nei Jin,Chicken Gizzard Lining,Shandong,neutral,sweet,Spleen/Stomach,Promotes digestion and strengthens Stomach
+六神曲,Liu Shen Qu,Six-Ingredient Leaven,Sichuan,warm,sweet/pungent,Spleen/Stomach,Promotes digestion and resolves food stagnation
+枳实,Zhi Shi,Immature Bitter Orange,Jiangxi,cool,bitter/pungent,Spleen/Stomach,Breaks up stagnation and moves Qi
+槟榔,Bing Lang,Areca Seed,Hainan,warm,pungent/bitter,Stomach/Large Intestine,Promotes Qi movement and expels parasites
+大黄,Da Huang,Rhubarb,Gansu,cold,bitter,Stomach/Large Intestine/Liver,Drains heat and promotes bowel movement
+芒硝,Mang Xiao,Mirabilite,Sichuan,cold,salty/bitter,Stomach/Large Intestine,Softens hardness and lubricates the intestines
+番泻叶,Fan Xie Ye,Senna Leaf,Imported,cold,bitter/sweet,Large Intestine,Drains heat and promotes bowel movement
+火麻仁,Huo Ma Ren,Hemp Seed,Jilin,neutral,sweet,Large Intestine/Spleen,Moistens the intestines and promotes bowel movement
+郁李仁,Yu Li Ren,Dwarf Flowering Cherry Seed,Hebei,neutral,sweet/bitter,Large Intestine/Small Intestine,Moistens the intestines and promotes bowel movement
+松子仁,Song Zi Ren,Pine Nut,Liaoning,warm,sweet,Large Intestine/Lung,Moistens the intestines and relieves cough
+蜂蜜,Feng Mi,Honey,Sichuan,neutral,sweet,Lung/Spleen/Large Intestine,Moistens the intestines and relieves cough
+决明子,Jue Ming Zi,Cassia Seed,Henan,cold,bitter/sweet,Liver/Large Intestine,Clears Liver heat and improves vision
+瓜蒌,Gua Lou,Trichosanthes,Henan,cold,sweet/slightly bitter,Lung/Stomach,Clears heat and transforms phlegm
+瓜蒌皮,Gua Lou Pi,Trichosanthes Peel,Henan,cold,sweet/slightly bitter,Lung/Stomach,Clears heat and transforms phlegm
+橘红,Ju Hong,Citrus Red,Guangdong,warm,pungent/bitter,Lung/Spleen,Regulates Qi and transforms phlegm
+竹茹,Zhu Ru,Bamboo Shavings,Hunan,cold,sweet,Heart/Lung/Stomach,Clears heat and transforms phlegm
+胆南星,Dan Nan Xing,Processed Arisaema,Sichuan,warm,pungent,Liver/Lung/Spleen,Dispels wind-phlegm and reduces swelling
+川贝母,Chuan Bei Mu,Fritillaria,Sichuan,cool,bitter/sweet,Lung/Heart,Clears heat and transforms phlegm
+浙贝母,Zhe Bei Mu,Fritillaria,Zhejiang,cool,bitter/sweet,Lung/Heart,Clears heat and transforms phlegm
+苦杏仁,Ku Xing Ren,Bitter Apricot Kernel,Hebei,warm,bitter,Lung/Large Intestine,Stops cough and relieves wheezing
+紫苏子,Zi Su Zi,Perilla Seed,Sichuan,warm,pungent,Lung/Large Intestine,Stops cough and relieves asthma
+白果,Bai Guo,Ginkgo,Jiangsu,neutral,sweet/bitter/astringent,Lung/Kidney,Stops wheezing and reduces phlegm
+葶苈子,Ting Li Zi,Lepidium,Hebei,cold,pungent/bitter,Lung/Bladder,Directs Qi downward and promotes urination
+款冬花,Kuan Dong Hua,Coltsfoot,Shaanxi,warm,pungent/slightly bitter,Lung,Stops cough and resolves phlegm
+桑白皮,Sang Bai Pi,Mulberry Root Bark,Henan,cold,sweet,Lung,Directs Qi downward and drains water
+厚朴,Hou Po,Magnolia Bark,Sichuan,warm,bitter/pungent,Lung/Spleen/Stomach/Large Intestine,Directs Qi downward and dries dampness
+紫苏叶,Zi Su Ye,Perilla Leaf,Sichuan,warm,pungent,Lung/Spleen,Releases exterior and regulates Qi
+白芥子,Bai Jie Zi,White Mustard Seed,Sichuan,warm,pungent,Lung/Spleen,Warms the Lung and transforms phlegm
+半夏曲,Ban Xia Qu,Pinellia Leaven,Sichuan,warm,pungent,Spleen/Stomach/Lung,Dries dampness and transforms phlegm
+茵陈,Yin Chen,Capillaris,Hebei,cool,bitter/pungent,Spleen/Stomach/Liver/Gallbladder,Clears damp-heat from Liver and Gallbladder
+金钱草,Jin Qian Cao,Lysimachia,Fujian,neutral,sweet,Liver/Gallbladder/Bladder,Clears heat and promotes urination
+虎杖,Hu Zhang,Polygonum Cuspidatum,Hunan,cold,bitter,Liver/Gallbladder/Lung,Clears heat and promotes blood circulation
+大蓟,Da Ji,Thistle,Hebei,cool,sweet,Heart/Liver,Cools blood and stops bleeding
+小蓟,Xiao Ji,Cirsium,Hebei,cool,sweet,Heart/Liver,Cools blood and stops bleeding
+茜草,Qian Cao,Madder,Jiangsu,cold,bitter,Heart/Liver,Cools blood and stops bleeding
+侧柏叶,Ce Bai Ye,Platycladus,Shandong,cool,bitter/astringent,Lung/Liver/Stomach,Cools blood and stops bleeding
+白茅根,Bai Mao Gen,Imperata,Shandong,cold,sweet,Lung/Stomach/Bladder,Cools blood and promotes urination
+藕节,Ou Jie,Lotus Node,Jiangsu,neutral,sweet/astringent,Liver/Stomach,Cools blood and stops bleeding
+花生衣,Hua Sheng Yi,Peanut Skin,Shandong,neutral,sweet,Liver/Stomach,Cools blood and stops bleeding
+地榆,Di Yu,Sanguisorba,Shandong,cold,bitter/sour,Liver/Large Intestine,Cools blood and stops bleeding
+槐花,Huai Hua,Sophora,Shandong,cold,bitter,Liver/Large Intestine,Cools blood and stops bleeding
+仙鹤草,Xian He Cao,Agrimony,Hunan,neutral,bitter/astringent,Liver/Lung/Large Intestine,Cools blood and stops bleeding
+藕节,Ou Jie,Lotus Node,Jiangsu,neutral,sweet/astringent,Liver/Stomach,Cools blood and stops bleeding
+白及,Bai Ji,Bletilla,Guizhou,neutral,sweet/astringent,Lung/Stomach/Liver,Stops bleeding and astringes swelling
+蒲黄,Pu Huang,Cattail Pollen,Shandong,neutral,sweet,Heart/Liver,Moves blood and stops bleeding
+血余炭,Xue Yu Tan,Carbonized Typha,Shandong,neutral,sweet,Heart/Liver,Moves blood and stops bleeding
+三七,San Qi,Notoginseng,Yunnan,warm,sweet/bitter,Liver/Stomach,Stops bleeding and reduces swelling
+茜草炭,Qian Cao Tan,Carbonized Madder,Jiangsu,cold,bitter,Heart/Liver,Cools blood and stops bleeding
+艾叶,Ai Ye,Mugwort,Jiangsu,warm,bitter/pungent,Spleen/Liver/Kidney,Warms the uterus and stops bleeding
+灶心土,Zao Xin Tu,Stove Ashes,Local,warm,bitter,Spleen/Stomach,Stops bleeding and astringes
+益母草,Yi Mu Cao,Motherwort,Hubei,slightly cold,bitter/pungent,Liver/Bladder,Promotes blood circulation and regulates menstruation
+玄胡索,Xuan Hu Suo,Corydalis,Sichuan,warm,pungent/bitter,Liver/Spleen/Heart,Promotes blood circulation and alleviates pain
+乳香,Ru Xiang,Frankincense,Imported,warm,pungent/bitter,Heart/Liver/Spleen,Promotes blood circulation and alleviates pain
+没药,Mo Yao,Myrrh,Imported,neutral,bitter/pungent,Heart/Liver/Spleen,Promotes blood circulation and alleviates pain
+五灵脂,Wu Ling Zhi,Trogopterus Dung,Sichuan,warm,bitter/sweet,Liver/Heart,Promotes blood circulation and alleviates pain
+延胡索,Yan Hu Suo,Corydalis,Zhejiang,warm,pungent/bitter,Liver/Spleen/Heart,Promotes blood circulation and alleviates pain
+穿山甲,Chuan Shan Jia,Pangolin Scales,Guangxi,neutral,salty,Liver/Stomach,Promotes blood circulation and reduces swelling
+鸡血藤,Ji Xue Teng,Spatholobus,Guangxi,warm,sweet/bitter,Liver/Kidney,Tonifies blood and promotes circulation
+王不留行,Wang Bu Liu Xing,Vaccaria,Shandong,neutral,bitter,Liver/Stomach,Promotes blood circulation and relieves stagnation
+桃仁,Tao Ren,Peach Kernel,Hebei,neutral,bitter/sweet,Heart/Liver/Large Intestine,Breaks up blood stasis and moistens intestines
+红花,Hong Hua,Safflower,Sichuan,warm,pungent,Heart/Liver,Promotes blood circulation and relieves pain
+泽兰,Ze Lan,Lycopus,Shandong,slightly warm,bitter/pungent,Liver/Lung,Promotes blood circulation and resolves swelling
+姜黄,Jiang Huang,Turmeric,Sichuan,warm,pungent/bitter,Liver/Spleen,Promotes blood circulation and alleviates pain
+郁金,Yu Jin,Curcuma,Sichuan,cool,pungent/bitter,Heart/Liver/Lung,Promotes blood circulation and clears heart heat
+莪术,E Zhu,Zedoary,Guangdong,warm,bitter/pungent,Liver/Spleen,Breaks up blood stasis and alleviates pain
+丝瓜络,Si Gua Luo,Loofah Fiber,Henan,neutral,sweet,Liver/Lung/Stomach,Promotes blood circulation and unblocks collaterals
+冬瓜子,Dong Gua Zi,Winter Melon Seed,Zhejiang,neutral,sweet,Spleen/Small Intestine/Large Intestine,Promotes urination and reduces swelling
+通草,Tong Cao,Tetrapanax,Sichuan,cool,sweet,Lung/Bladder,Promotes urination and clears heat
+石韦,Shi Wei,Pyrrosia,Hunan,cool,bitter/sweet,Lung/Small Intestine/Bladder,Promotes urination and clears heat
+海金沙,Hai Jin Sha,Lygodium Spore,Guangdong,cold,sweet,Bladder/Small Intestine,Promotes urination and eliminates stones
+木通,Mu Tong,Akebia,Guangxi,cold,bitter,Heart/Small Intestine/Bladder,Promotes urination and clears heart heat
+车前子,Che Qian Zi,Plantago Seed,Hebei,cold,sweet,Liver/Kidney/Bladder/Lung,Promotes urination and clears heat
+萆薢,Bi Xie,Dioscorea,Guangdong,neutral,bitter/sweet,Liver/Kidney/Bladder,Promotes urination and dispels dampness
+茯苓皮,Fu Ling Pi,Poria Skin,Yunnan,neutral,sweet/bland,Bladder,Promotes urination and percolates dampness
+猪苓,Zhu Ling,Polyporus,Anhui,neutral,sweet/bland,Bladder/Kidney,Promotes urination and drains dampness
+泽泻,Ze Xie,Alisma,Fujian,cold,sweet,Kidney/Bladder,Promotes urination and drains dampness
+商陆,Shang Lu,Phytolacca,Jiangsu,cold,bitter/toxic,Lung/Kidney,Promotes urination and reduces swelling
+蕲蛇,Qi She,Agkistrodon,Hubei,warm,sweet/salty,Liver/Spleen,Dispels wind-dampness and relieves spasms
+白附子,Bai Fu Zi,Processed Arisaema,Sichuan,warm,pungent/toxic,Liver/Spleen,Dispels wind and controls tremors
+天麻,Tian Ma,Gastrodia,Sichuan,neutral,sweet,Liver,Extinguishes wind and relieves spasms
+全蝎,Quan Xie,Scorpion,Shandong,neutral,pungent/toxic,Liver,Extinguishes wind and relieves spasms
+僵蚕,Jiang Can,Silkworm,Shandong,neutral,salty/pungent,Liver/Lung,Dispels wind and transforms phlegm
+地龙,Di Long,Earthworm,Guangdong,cold,salty,Liver/Lung/Bladder,Extinguishes wind and clears heat
+珍珠母,Zhen Zhu Mu,Mother of Pearl,Hainan,cold,salty,Liver/Heart,Calms Liver and subdues yang
+石决明,Shi Jue Ming,Abalone Shell,Guangdong,cold,salty,Liver/Kidney,Calms Liver and improves vision
+牡蛎,Mu Li,Oyster Shell,Shandong,cold,salty/astringent,Liver/Kidney,Calms Liver and subdues yang
+代赭石,Dai Zhe Shi,Hematite,Shanxi,cold,bitter/salty,Liver/Heart,Calms Liver and subdues yang
+紫石英,Zi Shi Ying,Fluorspar,Jiangsu,neutral,sweet,Heart/Kidney,Calms spirit and anchors yang
+龙骨,Long Gu,Fossilized Bone,Sichuan,neutral,sweet/astringent,Heart/Liver/Kidney,Calms spirit and astringes sweating
+磁石,Ci Shi,Magnetite,Hebei,cold,salty,Liver/Kidney,Calms Liver and anchors yang
+酸枣仁,Suan Zao Ren,Sour Jujube Seed,Hebei,neutral,sweet,Heart/Gallbladder/Liver,Calms spirit and nourishes heart
+柏子仁,Bai Zi Ren,Platycladus Seed,Beijing,neutral,sweet,Heart/Kidney/Large Intestine,Calms spirit and moistens intestines
+远志,Yuan Zhi,Polygala,Liaoning,warm,bitter/pungent,Heart/Kidney/Lung,Calms spirit and benefits intelligence
+合欢皮,He Huan Pi,Albizzia Bark,Anhui,neutral,sweet,Heart/Liver,Calms spirit and alleviates depression
+夜交藤,Ye Jiao Teng,Polygonum Vine,Jiangsu,neutral,sweet,Heart/Liver,Calms spirit and nourishes heart
+灵芝,Ling Zhi,Reishi Mushroom,Jilin,neutral,sweet/bitter,Heart/Liver/Lung,Calms spirit and tonifies Qi
+龙齿,Long Chi,Fossilized Teeth,Sichuan,neutral,sweet/salty,Liver/Heart,Calms spirit and anchors yang
+琥珀,Hu Po,Amber,Liaoning,neutral,sweet,Heart/Liver/Bladder,Calms spirit and promotes urination
+朱砂,Zhu Sha,Cinnabar,Hunan,cold,sweet/toxic,Heart,Calms spirit and relieves anxiety
+五味子,Wu Wei Zi,Schisandra,Jilin,warm,sour/sweet,Lung/Heart/Kidney,Astringes Lung and calms spirit
+山茱萸,Shan Zhu Yu,Cornus,Henan,warm,sour,Liver/Kidney,Tonifies Liver and Kidney
