@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if title %}{{ title }} - {% endif %}{{ t('site_title') }}</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- ECharts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
+    
+    <!-- Select2 for better dropdowns -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@1.5.2/dist/select2-bootstrap4.min.css">
+    
+    <!-- D3.js for knowledge graph -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">
+                <i class="fas fa-leaf me-2"></i>
+                {{ t('site_title') }}
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{{ url_for('index') }}">
+                            <i class="fas fa-home me-1"></i> {{ t('dashboard') }}
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="analyticsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-chart-bar me-1"></i> {{ t('analytics') }}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="analyticsDropdown">
+                            <li>
+                                <a class="dropdown-item" href="{{ url_for('province_stats') }}">
+                                    <i class="fas fa-map-marker-alt me-1"></i> {{ t('province_stats') }}
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{{ url_for('material_stats') }}">
+                                    <i class="fas fa-chart-pie me-1"></i> {{ t('material_usage') }}
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{{ url_for('property_distribution') }}">
+                                    <i class="fas fa-chart-pie me-1"></i> {{ t('property_distribution') }}
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{{ url_for('top_prescriptions') }}">
+                                    <i class="fas fa-list-ol me-1"></i> {{ t('top_prescriptions') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="prescriptionsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-prescription me-1"></i> {{ t('prescriptions') }}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="prescriptionsDropdown">
+                            <li>
+                                <a class="dropdown-item" href="{{ url_for('prescription_entry') }}">
+                                    <i class="fas fa-plus-circle me-1"></i> {{ t('add_prescription', lang) }}
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{{ url_for('prescription_search') }}">
+                                    <i class="fas fa-search me-1"></i> {{ t('search_prescriptions', lang) }}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/formula-optimization' %}active{% endif %}" href="{{ url_for('formula_optimization') }}">
+                            <i class="fas fa-robot me-1"></i> {{ t('formula_optimization') }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/knowledge-graph' %}active{% endif %}" href="{{ url_for('knowledge_graph') }}">
+                            <i class="fas fa-project-diagram me-1"></i> {{ t('knowledge_graph') }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/data-import' %}active{% endif %}" href="{{ url_for('data_import') }}">
+                            <i class="fas fa-file-import me-1"></i> {{ t('import_data') }}
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('change_language', lang='en' if lang == 'zh' else 'zh') }}">
+                            <i class="fas fa-language me-1"></i> {{ 'English' if lang == 'zh' else '中文' }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container content-wrapper">
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <!-- Page Title -->
+        {% if title and not request.path == '/' %}
+            <h1 class="mb-4">{{ title }}</h1>
+        {% endif %}
+        
+        <!-- Content -->
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 {{ t('site_title') }}</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <small class="text-muted">Powered by Flask, ECharts, and ML</small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Select2 -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/prescription.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/knowledge_graph.js') }}"></script>
+    
+    <!-- Page-specific scripts -->
+    {% block scripts %}
+    {% endblock %}
+</body>
+</html>

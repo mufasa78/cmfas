@@ -1,0 +1,184 @@
+{% extends "layout_base.html" %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">
+                    <i class="fas fa-home me-2"></i>{{ t('welcome') }}
+                </h2>
+                <p class="card-text">
+                    {{ t('welcome_description') }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <!-- Statistics Cards -->
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card stat-card primary">
+            <div class="card-body">
+                <div class="stat-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div class="stat-value">{{ total_materials }}</div>
+                <div class="stat-label">{{ t('medicinal_materials') }}</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card stat-card success">
+            <div class="card-body">
+                <div class="stat-icon">
+                    <i class="fas fa-prescription"></i>
+                </div>
+                <div class="stat-value">{{ total_prescriptions }}</div>
+                <div class="stat-label">{{ t('prescription_formulas') }}</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card stat-card info">
+            <div class="card-body">
+                <div class="stat-icon">
+                    <i class="fas fa-tag"></i>
+                </div>
+                <div class="stat-value">{{ total_efficacies }}</div>
+                <div class="stat-label">{{ t('efficacy_categories') }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Recent Prescriptions -->
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-history me-2"></i>{{ t('recent_prescriptions') }}
+                </h5>
+            </div>
+            <div class="card-body">
+                {% if recent_prescriptions %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>{{ t('prescription_name', lang) }}</th>
+                                    <th>{{ t('efficacy', lang) }}</th>
+                                    <th>{{ t('actions', lang) }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for prescription in recent_prescriptions %}
+                                <tr>
+                                    <td>{{ prescription.name }}</td>
+                                    <td>{{ prescription.efficacy }}</td>
+                                    <td>
+                                        <a href="{{ url_for('prescription_search') }}?view_prescription={{ prescription.id }}" class="btn btn-sm btn-outline-info">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <p class="text-muted">{{ t('no_prescriptions') }}</p>
+                {% endif %}
+            </div>
+            <div class="card-footer text-end">
+                <a href="{{ url_for('prescription_search') }}" class="btn btn-sm btn-outline-primary">{{ t('view_all') }}</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Top Used Materials -->
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-star me-2"></i>{{ t('top_materials') }}
+                </h5>
+            </div>
+            <div class="card-body">
+                {% if top_materials %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>{{ t('material_name', lang) }}</th>
+                                    <th>{{ t('property', lang) }}</th>
+                                    <th>{{ t('flavor', lang) }}</th>
+                                    <th>{{ t('usage', lang) }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for material in top_materials %}
+                                <tr>
+                                    <td>{{ material.name }}</td>
+                                    <td>{{ material.property or 'N/A' }}</td>
+                                    <td>{{ material.flavor or 'N/A' }}</td>
+                                    <td>
+                                        <span class="badge bg-primary">{{ material.usage_frequency }}</span>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <p class="text-muted">{{ t('no_materials') }}</p>
+                {% endif %}
+            </div>
+            <div class="card-footer text-end">
+                <a href="{{ url_for('material_stats') }}" class="btn btn-sm btn-outline-primary">{{ t('view_all') }}</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-lightbulb me-2"></i>{{ t('quick_analysis') }}
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <div class="d-grid gap-2">
+                            <a href="{{ url_for('province_stats') }}" class="btn btn-outline-primary">
+                                <i class="fas fa-map-marker-alt me-2"></i>{{ t('province_stats') }}
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="d-grid gap-2">
+                            <a href="{{ url_for('material_stats') }}" class="btn btn-outline-success">
+                                <i class="fas fa-chart-bar me-2"></i>{{ t('material_usage') }}
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="d-grid gap-2">
+                            <a href="{{ url_for('formula_optimization') }}" class="btn btn-outline-info">
+                                <i class="fas fa-robot me-2"></i>{{ t('formula_optimization') }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

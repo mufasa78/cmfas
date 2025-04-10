@@ -6,6 +6,8 @@ from models import (
     MedicinalMaterial, Prescription, EfficacyCategory, 
     MaterialInteraction, FormulaOptimization, DataImport
 )
+from translations import get_text
+from language import get_language, set_language
 from data_processing import (
     get_province_statistics, get_material_usage_frequency,
     get_property_distribution, get_flavor_distribution, get_meridian_distribution,
@@ -20,6 +22,13 @@ from knowledge_graph import (
 import logging
 
 logger = logging.getLogger(__name__)
+
+# Language route (for switching language)
+@app.route("/language/<lang>")
+def change_language(lang):
+    if lang in ['en', 'zh']:
+        set_language(lang)
+    return redirect(request.referrer or url_for('index'))
 
 # Home route
 @app.route("/")
@@ -37,14 +46,19 @@ def index():
         MedicinalMaterial.usage_frequency.desc()
     ).limit(5).all()
     
+    # Get current language
+    lang = get_language()
+    
     return render_template(
-        "index.html",
-        title="Chinese Medicine Prescription Analysis System",
+        "index_translated.html",
+        title=get_text('site_title', lang),
         total_materials=total_materials,
         total_prescriptions=total_prescriptions,
         total_efficacies=total_efficacies,
         recent_prescriptions=recent_prescriptions,
-        top_materials=top_materials
+        top_materials=top_materials,
+        lang=lang,
+        t=lambda key, *args: get_text(key, lang, *args)
     )
 
 # Province statistics route
