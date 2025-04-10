@@ -180,15 +180,18 @@ body {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
     border-radius: 0.25rem;
     padding: 0.5rem 0;
+    background-color: #343a40; /* Dark background for dropdown menu */
 }
 
 .dropdown-item {
     padding: 0.5rem 1rem;
     transition: all 0.2s ease;
+    color: rgba(255, 255, 255, 0.85); /* Light text color for dropdown items */
 }
 
 .dropdown-item:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff; /* Brighter text on hover */
 }
 
 .dropdown-item i {

@@ -16,7 +16,7 @@ function initPrescriptionForm() {
         allowClear: true,
         multiple: true,
         width: '100%',
-        theme: 'bootstrap4'
+        theme: 'bootstrap-5'
     });
     
     // Initialize Select2 for efficacy categories with tags
@@ -25,7 +25,7 @@ function initPrescriptionForm() {
         tags: true,
         tokenSeparators: [','],
         width: '100%',
-        theme: 'bootstrap4'
+        theme: 'bootstrap-5'
     });
 }
 
@@ -42,7 +42,7 @@ function initSearchForm() {
         placeholder: 'Select a medicinal material',
         allowClear: true,
         width: '100%',
-        theme: 'bootstrap4'
+        theme: 'bootstrap-5'
     });
     
     // Initialize Select2 for category
@@ -50,7 +50,7 @@ function initSearchForm() {
         placeholder: 'Select an efficacy category',
         allowClear: true,
         width: '100%',
-        theme: 'bootstrap4'
+        theme: 'bootstrap-5'
     });
 }
 
@@ -152,7 +152,7 @@ function initFormulaForm() {
         allowClear: true,
         multiple: true,
         width: '100%',
-        theme: 'bootstrap4'
+        theme: 'bootstrap-5'
     });
 }
 
