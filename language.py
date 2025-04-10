@@ -1,7 +1,7 @@
 """
 Language utilities for the application
 """
-from flask import request, session
+from flask import session
 from chinese_converter import to_simplified, to_traditional
 
 def get_language():
@@ -20,7 +20,8 @@ def set_language(lang):
     Args:
         lang (str): Language code ('en' or 'zh')
     """
-    session['language'] = lang
+    if lang in ['en', 'zh']:
+        session['language'] = lang
 
 def convert_chinese(text, to_type='simplified'):
     """
@@ -33,14 +34,17 @@ def convert_chinese(text, to_type='simplified'):
     Returns:
         str: Converted text
     """
-    if not text or not isinstance(text, str):
+    if not text:
         return text
-        
+    
     try:
         if to_type == 'simplified':
             return to_simplified(text)
-        else:
+        elif to_type == 'traditional':
             return to_traditional(text)
+        else:
+            return text
     except Exception as e:
-        print(f"Error converting Chinese text: {e}")
+        # Log error
+        print(f"Error converting text: {e}")
         return text
