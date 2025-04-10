@@ -1,0 +1,139 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">
+                        <i class="fas fa-list-ol me-2"></i>Top Prescriptions by Efficacy
+                    </h5>
+                    
+                    <!-- Efficacy Category Selector -->
+                    <form class="d-flex">
+                        <select class="form-select" name="category" id="category-select" onchange="this.form.submit()">
+                            {% for category in categories %}
+                                <option value="{{ category.name }}" {% if category.name == selected_category %}selected{% endif %}>
+                                    {{ category.name }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </form>
+                </div>
+            </div>
+            <div class="card-body">
+                <p>
+                    Below are the top prescriptions that can be used for the efficacy: <strong>{{ selected_category }}</strong>.
+                    This analysis helps practitioners identify the most common formulations for specific therapeutic purposes.
+                </p>
+                
+                {% if prescriptions %}
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Prescription Name</th>
+                                <th>Description</th>
+                                <th>Number of Materials</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for prescription in prescriptions %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ prescription.name }}</td>
+                                <td>
+                                    {% if prescription.description %}
+                                        {{ prescription.description|truncate(100) }}
+                                    {% else %}
+                                        <span class="text-muted">No description</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ prescription.materials|length }}</td>
+                                <td>
+                                    <a href="javascript:void(0)" onclick="loadPrescriptionDetails({{ prescription.id }})" class="btn btn-sm btn-outline-info">
+                                        <i class="fas fa-eye"></i> View
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle me-2"></i>No prescriptions found for this efficacy category.
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-leaf me-2"></i>Top Medicinal Materials for {{ selected_category }}
+                </h5>
+            </div>
+            <div class="card-body">
+                <p>
+                    These are the most frequently used medicinal materials in prescriptions for {{ selected_category }}.
+                    Understanding which materials are commonly used for specific efficacies helps in formulation design.
+                </p>
+                
+                {% if materials %}
+                <div class="chart-container" id="top-materials-chart"></div>
+                
+                <div class="table-responsive mt-4">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Material Name</th>
+                                <th>Occurrence Count</th>
+                                <th>Percentage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% set total_count = materials|sum(attribute='count') %}
+                            {% for material in materials %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ material.name }}</td>
+                                <td>{{ material.count }}</td>
+                                <td>{{ "%.2f"|format(material.count / total_count * 100) }}%</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle me-2"></i>No material data available for this efficacy category.
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Prescription Details Section -->
+<div id="prescription-details"></div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        {% if materials %}
+        // Initialize top materials chart
+        initTopMaterialsChart('top-materials-chart', {{ materials|tojson }});
+        {% endif %}
+    });
+</script>
+{% endblock %}

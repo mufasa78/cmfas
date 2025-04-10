@@ -1,0 +1,111 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-plus-circle me-2"></i>Add New Prescription
+                </h5>
+            </div>
+            <div class="card-body">
+                <p>
+                    Use this form to add a new prescription to the database. Be sure to include all required information
+                    and select the medicinal materials that comprise this prescription.
+                </p>
+                
+                <form method="POST" action="{{ url_for('prescription_entry') }}">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Prescription Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                        <div class="form-text">Enter the traditional Chinese name of the prescription.</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                        <div class="form-text">Provide a brief description of the prescription's history and usage.</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="efficacy" class="form-label">Efficacy <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="efficacy" name="efficacy" required>
+                        <div class="form-text">Describe what conditions this prescription is used to treat.</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="efficacy_categories" class="form-label">Efficacy Categories</label>
+                        <select class="form-control" id="efficacy_categories" name="efficacy_categories" multiple>
+                            {% for category in categories %}
+                                <option value="{{ category.name }}">{{ category.name }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="form-text">Select existing categories or type new ones (separated by comma).</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="materials" class="form-label">Medicinal Materials <span class="text-danger">*</span></label>
+                        <select class="form-control" id="materials" name="materials" multiple required>
+                            {% for material in materials %}
+                                <option value="{{ material.name }}">
+                                    {{ material.name }} 
+                                    {% if material.property or material.flavor %}
+                                        ({{ material.property or 'N/A' }}/{{ material.flavor or 'N/A' }})
+                                    {% endif %}
+                                </option>
+                            {% endfor %}
+                        </select>
+                        <div class="form-text">Select all materials that are part of this prescription.</div>
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save me-1"></i> Save Prescription
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-info-circle me-2"></i>Prescription Entry Guidelines
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6><i class="fas fa-check-circle text-success me-2"></i>Required Information:</h6>
+                        <ul>
+                            <li>Prescription Name (in Chinese or transliteration)</li>
+                            <li>Efficacy (conditions treated)</li>
+                            <li>At least one medicinal material</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6><i class="fas fa-lightbulb text-warning me-2"></i>Helpful Tips:</h6>
+                        <ul>
+                            <li>Add detailed descriptions to improve searchability</li>
+                            <li>Categorize prescriptions accurately for better analysis</li>
+                            <li>Include all materials, even those used in small amounts</li>
+                            <li>Consider traditional preparation methods if relevant</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info mt-3">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    <strong>Note:</strong> If a medicinal material is not in the list, you must add it to the database first via the Data Import functionality.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

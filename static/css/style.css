@@ -1,0 +1,250 @@
+/* Custom styles for Chinese Medicine Prescription Analysis System */
+
+/* Global styles */
+body {
+    background-color: #1e1e1e;
+    color: #e4e4e4;
+}
+
+.content-wrapper {
+    padding: 2rem 0;
+}
+
+/* Card customization */
+.card {
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    margin-bottom: 1.5rem;
+    background-color: #2d2d2d;
+    border: 1px solid #3d3d3d;
+}
+
+.card-header {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #3d3d3d;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Navigation */
+.navbar {
+    padding: 0.75rem 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-brand {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.nav-link {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link.active {
+    background-color: rgba(13, 110, 253, 0.5);
+}
+
+/* Stat cards on dashboard */
+.stat-card {
+    border-left: 4px solid;
+    transition: transform 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-card.primary {
+    border-left-color: var(--bs-primary);
+}
+
+.stat-card.success {
+    border-left-color: var(--bs-success);
+}
+
+.stat-card.info {
+    border-left-color: var(--bs-info);
+}
+
+.stat-card.warning {
+    border-left-color: var(--bs-warning);
+}
+
+.stat-card .stat-icon {
+    font-size: 3rem;
+    opacity: 0.3;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
+
+.stat-card .stat-value {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.stat-card .stat-label {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* Charts */
+.chart-container {
+    height: 400px;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.small-chart {
+    height: 300px;
+}
+
+/* Table customization */
+.table {
+    margin-bottom: 0;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Knowledge Graph */
+.knowledge-graph {
+    background-color: #2d2d2d;
+    border-radius: 0.5rem;
+}
+
+.knowledge-graph .link {
+    stroke-opacity: 0.6;
+}
+
+.knowledge-graph .node circle {
+    stroke: #fff;
+    stroke-width: 1.5px;
+}
+
+.knowledge-graph .node:hover circle {
+    stroke: #fd7e14;
+    stroke-width: 2px;
+}
+
+/* Select2 custom styling */
+.select2-container--bootstrap4 .select2-selection {
+    background-color: #2d2d2d;
+    border: 1px solid #495057;
+    color: #e4e4e4;
+}
+
+.select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice {
+    background-color: #495057;
+    border: 1px solid #6c757d;
+}
+
+.select2-container--bootstrap4 .select2-dropdown {
+    background-color: #2d2d2d;
+    border: 1px solid #495057;
+}
+
+.select2-container--bootstrap4 .select2-search--dropdown .select2-search__field {
+    background-color: #343a40;
+    border: 1px solid #495057;
+    color: #e4e4e4;
+}
+
+.select2-container--bootstrap4 .select2-results__option {
+    color: #e4e4e4;
+}
+
+.select2-container--bootstrap4 .select2-results__option--highlighted[aria-selected] {
+    background-color: #007bff;
+}
+
+/* Optimization results */
+.optimization-result {
+    background-color: #2d2d2d;
+    border-left: 4px solid #17a2b8;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0.25rem;
+}
+
+.optimization-result h4 {
+    color: #17a2b8;
+    margin-bottom: 1rem;
+}
+
+.formula-material {
+    background-color: #343a40;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
+/* Loading spinner */
+.loader {
+    border: 5px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 5px solid #3498db;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+    margin: 2rem auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Pagination */
+.pagination .page-link {
+    background-color: #343a40;
+    border-color: #495057;
+    color: #e4e4e4;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.pagination .page-item.disabled .page-link {
+    background-color: #2d2d2d;
+    border-color: #495057;
+    color: #6c757d;
+}
+
+/* Footer */
+.footer {
+    background-color: #2d2d2d;
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+    border-top: 1px solid #3d3d3d;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767.98px) {
+    .chart-container {
+        height: 300px;
+    }
+
+    .small-chart {
+        height: 250px;
+    }
+
+    .stat-card .stat-value {
+        font-size: 1.5rem;
+    }
+}

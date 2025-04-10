@@ -1,0 +1,253 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-robot me-2"></i>Formula Optimization
+                </h5>
+            </div>
+            <div class="card-body">
+                <p>
+                    This tool uses machine learning to optimize Chinese medicine formulations based on symptoms and desired efficacy.
+                    The system analyzes patterns from traditional prescriptions to suggest the most appropriate combination of medicinal
+                    materials for specific health conditions.
+                </p>
+                
+                <form method="POST" action="{{ url_for('formula_optimization') }}">
+                    <div class="mb-3">
+                        <label for="symptoms" class="form-label">Symptoms or Conditions <span class="text-danger">*</span></label>
+                        <textarea class="form-control" id="symptoms" name="symptoms" rows="3" required></textarea>
+                        <div class="form-text">
+                            Describe the symptoms or health conditions in detail. Include information about severity, duration, and any relevant
+                            patient characteristics.
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="base_materials" class="form-label">Base Materials (Optional)</label>
+                        <select class="form-control" id="base_materials" name="base_materials" multiple>
+                            {% for material in materials %}
+                                <option value="{{ material.name }}">
+                                    {{ material.name }} 
+                                    {% if material.property or material.flavor %}
+                                        ({{ material.property or 'N/A' }}/{{ material.flavor or 'N/A' }})
+                                    {% endif %}
+                                </option>
+                            {% endfor %}
+                        </select>
+                        <div class="form-text">
+                            Select specific materials you want to include in the formulation. Leave empty to let the system optimize from scratch.
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-magic me-1"></i> Generate Optimized Formula
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Optimization Results -->
+{% if optimization_result %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0">
+                    <i class="fas fa-flask me-2"></i>Optimization Results
+                </h5>
+            </div>
+            <div class="card-body">
+                <h4>Recommended Formula</h4>
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        {% for material in optimization_result.formula %}
+                            <span class="formula-material">{{ material }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <h4>Explanation</h4>
+                <div class="card bg-dark mb-4">
+                    <div class="card-body">
+                        <pre class="mb-0 text-white" style="white-space: pre-wrap;">{{ optimization_result.explanation }}</pre>
+                    </div>
+                </div>
+                
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    <strong>Important:</strong> This recommendation is based on pattern recognition and historical data analysis. 
+                    It should be reviewed by a qualified practitioner before implementation. Individual patient characteristics 
+                    and contraindications must be carefully considered.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Recent Optimizations -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-history me-2"></i>Recent Optimizations
+                </h5>
+            </div>
+            <div class="card-body">
+                {% if recent_optimizations %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Symptoms</th>
+                                    <th>Recommended Materials</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for optimization in recent_optimizations %}
+                                <tr>
+                                    <td>{{ optimization.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                                    <td>{{ optimization.user_symptoms|truncate(50) }}</td>
+                                    <td>
+                                        {% if optimization.recommended_formula.materials|length > 0 %}
+                                            {{ optimization.recommended_formula.materials[0] }}
+                                            {% if optimization.recommended_formula.materials|length > 1 %}
+                                                <span class="text-muted">+ {{ optimization.recommended_formula.materials|length - 1 }} more</span>
+                                            {% endif %}
+                                        {% else %}
+                                            <span class="text-muted">No materials</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#optimizationModal{{ optimization.id }}">
+                                            <i class="fas fa-eye"></i> View
+                                        </button>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Modal for viewing optimization details -->
+                                <div class="modal fade" id="optimizationModal{{ optimization.id }}" tabindex="-1" aria-labelledby="optimizationModalLabel{{ optimization.id }}" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="optimizationModalLabel{{ optimization.id }}">Formula Optimization Details</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h6>Symptoms/Conditions:</h6>
+                                                <p>{{ optimization.user_symptoms }}</p>
+                                                
+                                                <h6>Recommended Materials:</h6>
+                                                <div>
+                                                    {% for material in optimization.recommended_formula.materials %}
+                                                        <span class="formula-material">{{ material }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                                
+                                                <h6 class="mt-3">Based on:</h6>
+                                                <p>
+                                                    {% if optimization.recommended_formula.based_on %}
+                                                        {{ ", ".join(optimization.recommended_formula.based_on) }}
+                                                    {% else %}
+                                                        <span class="text-muted">Not specified</span>
+                                                    {% endif %}
+                                                </p>
+                                                
+                                                <h6>Explanation:</h6>
+                                                <div class="card bg-dark">
+                                                    <div class="card-body">
+                                                        <pre class="mb-0 text-white" style="white-space: pre-wrap;">{{ optimization.explanation }}</pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <p class="text-muted">No optimization history found. Use the form above to generate optimized formulas.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- How It Works -->
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-question-circle me-2"></i>How Formula Optimization Works
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3 text-center mb-3">
+                        <div class="h1 text-info mb-2">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h5>Historical Data Analysis</h5>
+                        <p class="text-muted">
+                            The system analyzes thousands of traditional prescriptions to identify patterns and relationships.
+                        </p>
+                    </div>
+                    
+                    <div class="col-md-3 text-center mb-3">
+                        <div class="h1 text-info mb-2">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h5>Machine Learning</h5>
+                        <p class="text-muted">
+                            Advanced algorithms learn which materials work well together for specific conditions.
+                        </p>
+                    </div>
+                    
+                    <div class="col-md-3 text-center mb-3">
+                        <div class="h1 text-info mb-2">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h5>Property Balancing</h5>
+                        <p class="text-muted">
+                            The system balances the five properties and flavors for harmonious formulations.
+                        </p>
+                    </div>
+                    
+                    <div class="col-md-3 text-center mb-3">
+                        <div class="h1 text-info mb-2">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                        <h5>Interaction Analysis</h5>
+                        <p class="text-muted">
+                            Potential synergistic and antagonistic interactions between materials are considered.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info mt-2">
+                    <i class="fas fa-info-circle me-2"></i>
+                    The optimization algorithm improves over time as more prescriptions and material data are added to the system.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

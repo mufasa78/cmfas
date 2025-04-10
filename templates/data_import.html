@@ -1,0 +1,263 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-file-import me-2"></i>Import Data
+                </h5>
+            </div>
+            <div class="card-body">
+                <p>
+                    Use this form to import data into the system. You can upload CSV files containing information about
+                    medicinal materials or prescriptions. Make sure your file follows the required format.
+                </p>
+                
+                <form method="POST" action="{{ url_for('data_import') }}" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="import_type" class="form-label">Import Type <span class="text-danger">*</span></label>
+                        <select class="form-select" id="import_type" name="import_type" required>
+                            <option value="" selected disabled>Select import type</option>
+                            <option value="materials">Medicinal Materials</option>
+                            <option value="prescriptions">Prescriptions</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="file" class="form-label">CSV File <span class="text-danger">*</span></label>
+                        <input class="form-control" type="file" id="file" name="file" accept=".csv" required>
+                        <div class="form-text">Upload a CSV file with the data to import.</div>
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                        <button type="submit" class="btn btn-primary" id="upload_btn" disabled>
+                            <i class="fas fa-upload me-1"></i> Upload and Process
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Import Logs -->
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-history me-2"></i>Recent Import Logs
+                </h5>
+            </div>
+            <div class="card-body">
+                {% if import_logs %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Filename</th>
+                                    <th>Type</th>
+                                    <th>Rows Imported</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for log in import_logs %}
+                                <tr>
+                                    <td>{{ log.import_date.strftime('%Y-%m-%d %H:%M') }}</td>
+                                    <td>{{ log.filename }}</td>
+                                    <td>{{ log.import_type }}</td>
+                                    <td>{{ log.rows_imported }}</td>
+                                    <td>
+                                        {% if log.status == 'success' %}
+                                            <span class="badge bg-success">Success</span>
+                                        {% elif log.status == 'partial' %}
+                                            <span class="badge bg-warning">Partial</span>
+                                        {% else %}
+                                            <span class="badge bg-danger">Error</span>
+                                        {% endif %}
+                                        
+                                        {% if log.error_message %}
+                                            <button class="btn btn-sm btn-outline-danger ms-1" data-bs-toggle="modal" data-bs-target="#errorModal{{ log.id }}">
+                                                <i class="fas fa-exclamation-circle"></i>
+                                            </button>
+                                            
+                                            <!-- Error Modal -->
+                                            <div class="modal fade" id="errorModal{{ log.id }}" tabindex="-1" aria-labelledby="errorModalLabel{{ log.id }}" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="errorModalLabel{{ log.id }}">Import Errors</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <pre class="text-danger">{{ log.error_message }}</pre>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <p class="text-muted">No import logs found. Start by importing some data.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CSV Format Guidelines -->
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-table me-2"></i>Medicinal Materials CSV Format
+                </h5>
+            </div>
+            <div class="card-body">
+                <p>
+                    Your CSV file for medicinal materials should contain the following columns:
+                </p>
+                
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Column</th>
+                                <th>Description</th>
+                                <th>Required</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>name</td>
+                                <td>Name of the medicinal material</td>
+                                <td><span class="badge bg-success">Yes</span></td>
+                            </tr>
+                            <tr>
+                                <td>pinyin</td>
+                                <td>Pinyin transliteration</td>
+                                <td><span class="badge bg-secondary">No</span></td>
+                            </tr>
+                            <tr>
+                                <td>english_name</td>
+                                <td>English name of the material</td>
+                                <td><span class="badge bg-secondary">No</span></td>
+                            </tr>
+                            <tr>
+                                <td>province_origin</td>
+                                <td>Province where the material originates</td>
+                                <td><span class="badge bg-secondary">No</span></td>
+                            </tr>
+                            <tr>
+                                <td>property</td>
+                                <td>Five properties (cold, hot, warm, cool, neutral)</td>
+                                <td><span class="badge bg-secondary">No</span></td>
+                            </tr>
+                            <tr>
+                                <td>flavor</td>
+                                <td>Five flavors (sour, bitter, sweet, spicy, salty)</td>
+                                <td><span class="badge bg-secondary">No</span></td>
+                            </tr>
+                            <tr>
+                                <td>meridian</td>
+                                <td>Meridian tropism (which organ/meridian it affects)</td>
+                                <td><span class="badge bg-secondary">No</span></td>
+                            </tr>
+                            <tr>
+                                <td>description</td>
+                                <td>Description of the material</td>
+                                <td><span class="badge bg-secondary">No</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="alert alert-info mt-3">
+                    <strong>Example:</strong><br>
+                    <code>name,pinyin,english_name,province_origin,property,flavor,meridian,description</code><br>
+                    <code>人参,Ren Shen,Ginseng,Jilin,warm,sweet,Lung,Tonifies Qi and promotes blood production</code>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-table me-2"></i>Prescriptions CSV Format
+                </h5>
+            </div>
+            <div class="card-body">
+                <p>
+                    Your CSV file for prescriptions should contain the following columns:
+                </p>
+                
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Column</th>
+                                <th>Description</th>
+                                <th>Required</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>name</td>
+                                <td>Name of the prescription</td>
+                                <td><span class="badge bg-success">Yes</span></td>
+                            </tr>
+                            <tr>
+                                <td>description</td>
+                                <td>Description of the prescription</td>
+                                <td><span class="badge bg-secondary">No</span></td>
+                            </tr>
+                            <tr>
+                                <td>efficacy</td>
+                                <td>What the prescription treats</td>
+                                <td><span class="badge bg-success">Yes</span></td>
+                            </tr>
+                            <tr>
+                                <td>materials</td>
+                                <td>List of materials in format: "name1:amount1,name2:amount2"</td>
+                                <td><span class="badge bg-success">Yes</span></td>
+                            </tr>
+                            <tr>
+                                <td>efficacy_categories</td>
+                                <td>Comma-separated list of efficacy categories</td>
+                                <td><span class="badge bg-secondary">No</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="alert alert-info mt-3">
+                    <strong>Example:</strong><br>
+                    <code>name,description,efficacy,materials,efficacy_categories</code><br>
+                    <code>四物汤,Classical women's tonic,Blood deficiency,当归:9g,白芍:9g,川芎:6g,熟地黄:9g,Blood tonifying,Women's health</code>
+                </div>
+                
+                <div class="alert alert-warning mt-3">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    <strong>Note:</strong> Materials must already exist in the database before importing prescriptions that reference them.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

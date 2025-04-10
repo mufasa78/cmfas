@@ -1,0 +1,156 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">
+                        <i class="fas fa-project-diagram me-2"></i>Chinese Medicine Knowledge Graph
+                    </h5>
+                    
+                    <!-- Filter controls -->
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary" onclick="resetGraph()">
+                            <i class="fas fa-sync-alt me-1"></i> Reset
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-filter me-1"></i> Filter
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><h6 class="dropdown-header">Filter Options</h6></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><h6 class="dropdown-header">Prescription filters coming soon</h6></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <p>
+                    This knowledge graph visualizes the relationships between medicinal materials and prescriptions in 
+                    Chinese medicine. The graph reveals connections, interactions, and patterns that might not be evident
+                    in traditional data representations.
+                </p>
+                
+                <div class="alert alert-info">
+                    <i class="fas fa-mouse-pointer me-2"></i>
+                    <strong>Tip:</strong> You can drag nodes to rearrange the graph, zoom with the mouse wheel, and click on nodes for more information.
+                </div>
+                
+                <!-- Knowledge graph visualization -->
+                <div id="knowledge-graph" style="height: 600px; width: 100%; border: 1px solid #343a40; border-radius: 0.5rem;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-info-circle me-2"></i>About the Knowledge Graph
+                </h5>
+            </div>
+            <div class="card-body">
+                <h6><i class="fas fa-circle text-primary me-2"></i>Material Nodes</h6>
+                <p>
+                    Blue circles represent medicinal materials. Each material has properties, flavors, and meridian associations.
+                    The size of the node indicates how frequently it's used in prescriptions.
+                </p>
+                
+                <h6><i class="fas fa-circle text-success me-2"></i>Prescription Nodes</h6>
+                <p>
+                    Green circles represent prescriptions. These nodes connect to the materials they contain.
+                    The size of the node indicates the number of materials in the prescription.
+                </p>
+                
+                <h6><i class="fas fa-long-arrow-alt-right text-secondary me-2"></i>Contains Relationships</h6>
+                <p>
+                    Gray lines connect prescriptions to the materials they contain, showing the composition of each formula.
+                </p>
+                
+                <h6><i class="fas fa-long-arrow-alt-right text-warning me-2"></i>Interaction Relationships</h6>
+                <p>
+                    Colored lines between materials indicate interactions:
+                </p>
+                <ul>
+                    <li>Green: Synergistic (materials enhance each other)</li>
+                    <li>Red: Antagonistic (materials may counteract each other)</li>
+                    <li>Orange: Other interaction types</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-lightbulb me-2"></i>Knowledge Graph Applications
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="accordion" id="graphApplications">
+                    <div class="accordion-item bg-dark">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed bg-dark text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                Formula Development
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#graphApplications">
+                            <div class="accordion-body">
+                                By analyzing the connections between materials and prescriptions, practitioners can identify 
+                                common combinations and patterns that have proven effective, informing the development of new formulations.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item bg-dark">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed bg-dark text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Interaction Identification
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#graphApplications">
+                            <div class="accordion-body">
+                                The graph helps identify potential synergistic or antagonistic interactions between medicinal materials,
+                                which is crucial for safe and effective prescription formulation.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item bg-dark">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed bg-dark text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Knowledge Discovery
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#graphApplications">
+                            <div class="accordion-body">
+                                By exploring the graph, researchers can discover previously unknown relationships and patterns
+                                in traditional Chinese medicine, potentially leading to new therapeutic insights.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item bg-dark">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed bg-dark text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Educational Tool
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#graphApplications">
+                            <div class="accordion-body">
+                                The visual representation of connections between materials and prescriptions serves as a powerful
+                                educational tool for students learning about traditional Chinese medicine systems.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
