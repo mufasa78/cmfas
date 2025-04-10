@@ -25,7 +25,7 @@ class MedicinalMaterial(db.Model):
     property = db.Column(db.String(20))
     
     # Five flavors (五味): sour, bitter, sweet, spicy, salty
-    flavor = db.Column(db.String(20))
+    flavor = db.Column(db.String(100))  # Increased size to handle combined flavors
     
     # Meridian tropism (归经): which organ/meridian the herb affects
     meridian = db.Column(db.String(100))

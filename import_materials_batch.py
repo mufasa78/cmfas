@@ -78,7 +78,7 @@ def log_import(filename, import_type, success_count, error_count, error_messages
         print("Error logging import")
 
 def main():
-    batch_size = 25  # Import 25 materials at a time
+    batch_size = 50  # Import 50 materials at a time (increased from 25)
     
     if len(sys.argv) < 2:
         print("Usage: python import_materials_batch.py <start_row>")
