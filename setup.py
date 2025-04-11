@@ -1,8 +1,9 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
-    name="streamlit-app",
+    name="cmfas",
     version="0.1.0",
     description="Chinese Medicine Formula Analysis System",
     python_requires=">=3.9",
+    packages=find_packages(),
 )
