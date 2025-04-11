@@ -1,3 +1,0 @@
-include cmfas/*.py
-include cmfas/__init__.py
-recursive-include cmfas *
