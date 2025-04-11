@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "layout_base.html" %}
 
 {% block content %}
 <div class="row mb-4">
@@ -6,35 +6,34 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="mb-0">
-                    <i class="fas fa-file-import me-2"></i>Import Data
+                    <i class="fas fa-file-import me-2"></i>{{ t('import_data') }}
                 </h5>
             </div>
             <div class="card-body">
                 <p>
-                    Use this form to import data into the system. You can upload CSV files containing information about
-                    medicinal materials or prescriptions. Make sure your file follows the required format.
+                    {{ t('import_data_description') }}
                 </p>
-                
+
                 <form method="POST" action="{{ url_for('data_import') }}" enctype="multipart/form-data">
                     <div class="mb-3">
-                        <label for="import_type" class="form-label">Import Type <span class="text-danger">*</span></label>
+                        <label for="import_type" class="form-label">{{ t('import_type') }} <span class="text-danger">*</span></label>
                         <select class="form-select" id="import_type" name="import_type" required>
-                            <option value="" selected disabled>Select import type</option>
-                            <option value="materials">Medicinal Materials</option>
-                            <option value="prescriptions">Prescriptions</option>
+                            <option value="" selected disabled>{{ t('select_import_type') }}</option>
+                            <option value="materials">{{ t('medicinal_materials') }}</option>
+                            <option value="prescriptions">{{ t('prescriptions') }}</option>
                         </select>
                     </div>
-                    
+
                     <div class="mb-3">
-                        <label for="file" class="form-label">CSV File <span class="text-danger">*</span></label>
+                        <label for="file" class="form-label">{{ t('csv_file') }} <span class="text-danger">*</span></label>
                         <input class="form-control" type="file" id="file" name="file" accept=".csv" required>
-                        <div class="form-text">Upload a CSV file with the data to import.</div>
+                        <div class="form-text">{{ t('upload_csv_instruction') }}</div>
                     </div>
-                    
+
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                        <button type="reset" class="btn btn-outline-secondary">{{ t('reset') }}</button>
                         <button type="submit" class="btn btn-primary" id="upload_btn" disabled>
-                            <i class="fas fa-upload me-1"></i> Upload and Process
+                            <i class="fas fa-upload me-1"></i> {{ t('upload_and_process') }}
                         </button>
                     </div>
                 </form>
@@ -49,7 +48,7 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="mb-0">
-                    <i class="fas fa-history me-2"></i>Recent Import Logs
+                    <i class="fas fa-history me-2"></i>{{ t('recent_import_logs') }}
                 </h5>
             </div>
             <div class="card-body">
@@ -58,11 +57,11 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>Date</th>
-                                    <th>Filename</th>
-                                    <th>Type</th>
-                                    <th>Rows Imported</th>
-                                    <th>Status</th>
+                                    <th>{{ t('date') }}</th>
+                                    <th>{{ t('filename') }}</th>
+                                    <th>{{ t('type') }}</th>
+                                    <th>{{ t('rows_imported') }}</th>
+                                    <th>{{ t('status') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -74,31 +73,31 @@
                                     <td>{{ log.rows_imported }}</td>
                                     <td>
                                         {% if log.status == 'success' %}
-                                            <span class="badge bg-success">Success</span>
+                                            <span class="badge bg-success">{{ t('success') }}</span>
                                         {% elif log.status == 'partial' %}
-                                            <span class="badge bg-warning">Partial</span>
+                                            <span class="badge bg-warning">{{ t('partial') }}</span>
                                         {% else %}
-                                            <span class="badge bg-danger">Error</span>
+                                            <span class="badge bg-danger">{{ t('error') }}</span>
                                         {% endif %}
-                                        
+
                                         {% if log.error_message %}
                                             <button class="btn btn-sm btn-outline-danger ms-1" data-bs-toggle="modal" data-bs-target="#errorModal{{ log.id }}">
                                                 <i class="fas fa-exclamation-circle"></i>
                                             </button>
-                                            
+
                                             <!-- Error Modal -->
                                             <div class="modal fade" id="errorModal{{ log.id }}" tabindex="-1" aria-labelledby="errorModalLabel{{ log.id }}" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="errorModalLabel{{ log.id }}">Import Errors</h5>
+                                                            <h5 class="modal-title" id="errorModalLabel{{ log.id }}">{{ t('import_errors') }}</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
                                                             <pre class="text-danger">{{ log.error_message }}</pre>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ t('close') }}</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -111,7 +110,7 @@
                         </table>
                     </div>
                 {% else %}
-                    <p class="text-muted">No import logs found. Start by importing some data.</p>
+                    <p class="text-muted">{{ t('no_import_logs') }}</p>
                 {% endif %}
             </div>
         </div>
@@ -124,137 +123,137 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="mb-0">
-                    <i class="fas fa-table me-2"></i>Medicinal Materials CSV Format
+                    <i class="fas fa-table me-2"></i>{{ t('medicinal_materials_csv_format') }}
                 </h5>
             </div>
             <div class="card-body">
                 <p>
-                    Your CSV file for medicinal materials should contain the following columns:
+                    {{ t('materials_csv_description') }}
                 </p>
-                
+
                 <div class="table-responsive">
                     <table class="table table-sm">
                         <thead>
                             <tr>
-                                <th>Column</th>
-                                <th>Description</th>
-                                <th>Required</th>
+                                <th>{{ t('column') }}</th>
+                                <th>{{ t('description') }}</th>
+                                <th>{{ t('required') }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>name</td>
-                                <td>Name of the medicinal material</td>
-                                <td><span class="badge bg-success">Yes</span></td>
+                                <td>{{ t('material_name_description') }}</td>
+                                <td><span class="badge bg-success">{{ t('yes') }}</span></td>
                             </tr>
                             <tr>
                                 <td>pinyin</td>
-                                <td>Pinyin transliteration</td>
-                                <td><span class="badge bg-secondary">No</span></td>
+                                <td>{{ t('pinyin_description') }}</td>
+                                <td><span class="badge bg-secondary">{{ t('no') }}</span></td>
                             </tr>
                             <tr>
                                 <td>english_name</td>
-                                <td>English name of the material</td>
-                                <td><span class="badge bg-secondary">No</span></td>
+                                <td>{{ t('english_name_description') }}</td>
+                                <td><span class="badge bg-secondary">{{ t('no') }}</span></td>
                             </tr>
                             <tr>
                                 <td>province_origin</td>
-                                <td>Province where the material originates</td>
-                                <td><span class="badge bg-secondary">No</span></td>
+                                <td>{{ t('province_origin_description') }}</td>
+                                <td><span class="badge bg-secondary">{{ t('no') }}</span></td>
                             </tr>
                             <tr>
                                 <td>property</td>
-                                <td>Five properties (cold, hot, warm, cool, neutral)</td>
-                                <td><span class="badge bg-secondary">No</span></td>
+                                <td>{{ t('property_description') }}</td>
+                                <td><span class="badge bg-secondary">{{ t('no') }}</span></td>
                             </tr>
                             <tr>
                                 <td>flavor</td>
-                                <td>Five flavors (sour, bitter, sweet, spicy, salty)</td>
-                                <td><span class="badge bg-secondary">No</span></td>
+                                <td>{{ t('flavor_description') }}</td>
+                                <td><span class="badge bg-secondary">{{ t('no') }}</span></td>
                             </tr>
                             <tr>
                                 <td>meridian</td>
-                                <td>Meridian tropism (which organ/meridian it affects)</td>
-                                <td><span class="badge bg-secondary">No</span></td>
+                                <td>{{ t('meridian_description') }}</td>
+                                <td><span class="badge bg-secondary">{{ t('no') }}</span></td>
                             </tr>
                             <tr>
                                 <td>description</td>
-                                <td>Description of the material</td>
-                                <td><span class="badge bg-secondary">No</span></td>
+                                <td>{{ t('material_description_field') }}</td>
+                                <td><span class="badge bg-secondary">{{ t('no') }}</span></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                
+
                 <div class="alert alert-info mt-3">
-                    <strong>Example:</strong><br>
+                    <strong>{{ t('example') }}:</strong><br>
                     <code>name,pinyin,english_name,province_origin,property,flavor,meridian,description</code><br>
                     <code>人参,Ren Shen,Ginseng,Jilin,warm,sweet,Lung,Tonifies Qi and promotes blood production</code>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <div class="col-md-6">
         <div class="card">
             <div class="card-header">
                 <h5 class="mb-0">
-                    <i class="fas fa-table me-2"></i>Prescriptions CSV Format
+                    <i class="fas fa-table me-2"></i>{{ t('prescriptions_csv_format') }}
                 </h5>
             </div>
             <div class="card-body">
                 <p>
-                    Your CSV file for prescriptions should contain the following columns:
+                    {{ t('prescriptions_csv_description') }}
                 </p>
-                
+
                 <div class="table-responsive">
                     <table class="table table-sm">
                         <thead>
                             <tr>
-                                <th>Column</th>
-                                <th>Description</th>
-                                <th>Required</th>
+                                <th>{{ t('column') }}</th>
+                                <th>{{ t('description') }}</th>
+                                <th>{{ t('required') }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>name</td>
-                                <td>Name of the prescription</td>
-                                <td><span class="badge bg-success">Yes</span></td>
+                                <td>{{ t('prescription_name_description') }}</td>
+                                <td><span class="badge bg-success">{{ t('yes') }}</span></td>
                             </tr>
                             <tr>
                                 <td>description</td>
-                                <td>Description of the prescription</td>
-                                <td><span class="badge bg-secondary">No</span></td>
+                                <td>{{ t('prescription_description_field') }}</td>
+                                <td><span class="badge bg-secondary">{{ t('no') }}</span></td>
                             </tr>
                             <tr>
                                 <td>efficacy</td>
-                                <td>What the prescription treats</td>
-                                <td><span class="badge bg-success">Yes</span></td>
+                                <td>{{ t('efficacy_description') }}</td>
+                                <td><span class="badge bg-success">{{ t('yes') }}</span></td>
                             </tr>
                             <tr>
                                 <td>materials</td>
-                                <td>List of materials in format: "name1:amount1,name2:amount2"</td>
-                                <td><span class="badge bg-success">Yes</span></td>
+                                <td>{{ t('materials_format_description') }}</td>
+                                <td><span class="badge bg-success">{{ t('yes') }}</span></td>
                             </tr>
                             <tr>
                                 <td>efficacy_categories</td>
-                                <td>Comma-separated list of efficacy categories</td>
-                                <td><span class="badge bg-secondary">No</span></td>
+                                <td>{{ t('efficacy_categories_description') }}</td>
+                                <td><span class="badge bg-secondary">{{ t('no') }}</span></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                
+
                 <div class="alert alert-info mt-3">
-                    <strong>Example:</strong><br>
+                    <strong>{{ t('example') }}:</strong><br>
                     <code>name,description,efficacy,materials,efficacy_categories</code><br>
                     <code>四物汤,Classical women's tonic,Blood deficiency,当归:9g,白芍:9g,川芎:6g,熟地黄:9g,Blood tonifying,Women's health</code>
                 </div>
-                
+
                 <div class="alert alert-warning mt-3">
                     <i class="fas fa-exclamation-triangle me-2"></i>
-                    <strong>Note:</strong> Materials must already exist in the database before importing prescriptions that reference them.
+                    <strong>{{ t('note') }}:</strong> {{ t('materials_prerequisite_warning') }}
                 </div>
             </div>
         </div>
