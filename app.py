@@ -20,14 +20,8 @@ app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)  # needed for url_for
 # Configure the database
 db_url = os.environ.get("DATABASE_URL")
 if not db_url:
-    # Construct from individual parameters
-    db_user = os.environ.get("PGUSER", "postgres")
-    db_password = os.environ.get("PGPASSWORD", "")
-    db_host = os.environ.get("PGHOST", "localhost")
-    db_port = os.environ.get("PGPORT", "5432")
-    db_name = os.environ.get("PGDATABASE", "chinese_medicine")
-    
-    db_url = f"postgresql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
+    # Use the provided Neon PostgreSQL database
+    db_url = "postgresql://neondb_owner:npg_Bnf7usLCGcZ5@ep-holy-tree-a5vv7bmk-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require"
 
 app.config["SQLALCHEMY_DATABASE_URI"] = db_url
 app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
@@ -42,7 +36,7 @@ db.init_app(app)
 with app.app_context():
     # Import models to ensure tables are created
     import models  # noqa: F401
-    
+
     try:
         db.create_all()
         logging.info("Database tables created successfully")
