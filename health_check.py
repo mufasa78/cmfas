@@ -35,7 +35,7 @@ def main():
     # Package information
     st.header("Installed Packages")
     try:
-        import pkg_resources
+        import pkg_resources # type: ignore
         packages = sorted([f"{pkg.key}=={pkg.version}" 
                           for pkg in pkg_resources.working_set])
         st.code("\n".join(packages))

@@ -9,4 +9,5 @@ description = "Chinese Medicine Formula Analysis System"
 requires-python = ">=3.9"
 
 [tool.setuptools]
-packages = []
+packages = ["cmfas"]
+include-package-data = true
