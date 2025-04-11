@@ -22,8 +22,12 @@ try:
     from sqlalchemy import create_engine, text
     from chinese_converter import to_simplified, to_traditional
 except ImportError as e:
-    st.error(f"Error importing required packages: {e}")
-    st.info("Please check your requirements.txt file and make sure all dependencies are installed.")
+    if 'language' in st.session_state and st.session_state.language == 'zh':
+        st.error(f"导入所需包时出错：{e}")
+        st.info("请检查您的requirements.txt文件并确保所有依赖项已安装。")
+    else:
+        st.error(f"Error importing required packages: {e}")
+        st.info("Please check your requirements.txt file and make sure all dependencies are installed.")
 
 # Database configuration
 DB_URL = os.environ.get("DATABASE_URL", "postgresql://neondb_owner:npg_Bnf7usLCGcZ5@ep-holy-tree-a5vv7bmk-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require")
@@ -124,7 +128,10 @@ def get_text(key):
 def get_engine():
     # Skip actual database connection during health checks
     if is_health_check:
-        st.info("Health check detected - skipping database connection")
+        if 'language' in st.session_state and st.session_state.language == 'zh':
+            st.info("检测到健康检查 - 跳过数据库连接")
+        else:
+            st.info("Health check detected - skipping database connection")
         return None
 
     if not DB_URL:
@@ -136,7 +143,10 @@ def get_engine():
             conn.execute(text("SELECT 1"))
         return engine
     except Exception as e:
-        st.error(f"Database connection error: {e}")
+        if 'language' in st.session_state and st.session_state.language == 'zh':
+            st.error(f"数据库连接错误：{e}")
+        else:
+            st.error(f"Database connection error: {e}")
         return None
 
 # Database helper functions
@@ -476,7 +486,10 @@ def property_distribution_page():
 
     if properties or flavors or meridians:
         # Create tabs for different distributions
-        tab1, tab2, tab3 = st.tabs(["五性", "五味", "归经"])
+        if st.session_state.language == 'zh':
+            tab1, tab2, tab3 = st.tabs(["五性", "五味", "归经"])
+        else:
+            tab1, tab2, tab3 = st.tabs(["Five Properties", "Five Flavors", "Meridian Tropism"])
 
         with tab1:
             if properties:
@@ -485,7 +498,7 @@ def property_distribution_page():
                     df,
                     values='Count',
                     names='Property',
-                    title="五性分布 (Five Properties Distribution)"
+                    title="五性分布" if st.session_state.language == 'zh' else "Five Properties Distribution"
                 )
                 st.plotly_chart(fig, use_container_width=True)
             else:
@@ -498,7 +511,7 @@ def property_distribution_page():
                     df,
                     values='Count',
                     names='Flavor',
-                    title="五味分布 (Five Flavors Distribution)"
+                    title="五味分布" if st.session_state.language == 'zh' else "Five Flavors Distribution"
                 )
                 st.plotly_chart(fig, use_container_width=True)
             else:
@@ -513,7 +526,7 @@ def property_distribution_page():
                     y='Count',
                     color='Count',
                     color_continuous_scale='Viridis',
-                    title="归经分布 (Meridian Distribution)"
+                    title="归经分布" if st.session_state.language == 'zh' else "Meridian Distribution"
                 )
                 st.plotly_chart(fig, use_container_width=True)
             else:
@@ -523,27 +536,42 @@ def property_distribution_page():
 
 def top_prescriptions_page():
     st.header(get_text('top_prescriptions'))
-    st.write("⚠️ This feature is limited in the Streamlit version. Please use the Flask application for full functionality.")
+    if st.session_state.language == 'zh':
+        st.write("⚠️ 此功能在Streamlit版本中受限。请使用Flask应用程序获取完整功能。")
+    else:
+        st.write("⚠️ This feature is limited in the Streamlit version. Please use the Flask application for full functionality.")
 
 def formula_optimization_page():
     st.header(get_text('formula_optimization'))
-    st.write("⚠️ This feature is limited in the Streamlit version. Please use the Flask application for full functionality.")
+    if st.session_state.language == 'zh':
+        st.write("⚠️ 此功能在Streamlit版本中受限。请使用Flask应用程序获取完整功能。")
+    else:
+        st.write("⚠️ This feature is limited in the Streamlit version. Please use the Flask application for full functionality.")
 
 def knowledge_graph_page():
     st.header(get_text('knowledge_graph'))
-    st.write("⚠️ This feature is limited in the Streamlit version. Please use the Flask application for full functionality.")
+    if st.session_state.language == 'zh':
+        st.write("⚠️ 此功能在Streamlit版本中受限。请使用Flask应用程序获取完整功能。")
+    else:
+        st.write("⚠️ This feature is limited in the Streamlit version. Please use the Flask application for full functionality.")
 
 # Main application
 def main():
     # Special handling for health checks
     if is_health_check:
-        st.success("Health check passed")
+        if st.session_state.language == 'zh':
+            st.success("健康检查通过")
+        else:
+            st.success("Health check passed")
         return
 
     # Display a message for Streamlit Cloud deployment
     is_deployment = os.environ.get("STREAMLIT_DEPLOYMENT", "false").lower() == "true"
     if is_deployment:
-        st.info("⚠️ This application is running on Streamlit Cloud. Some features may be limited.")
+        if st.session_state.language == 'zh':
+            st.info("⚠️ 此应用程序在Streamlit Cloud上运行。某些功能可能受限。")
+        else:
+            st.info("⚠️ This application is running on Streamlit Cloud. Some features may be limited.")
 
     if 'page' not in st.session_state:
         st.session_state.page = 'dashboard'
