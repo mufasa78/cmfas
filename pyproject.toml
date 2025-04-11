@@ -1,9 +1,0 @@
-[build-system]
-requires = ["setuptools>=42", "wheel"]
-build-backend = "setuptools.build_meta"
-
-[project]
-name = "cmfas"
-version = "0.1.0"
-description = "Chinese Medicine Formula Analysis System"
-requires-python = ">=3.9"
