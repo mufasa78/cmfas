@@ -5,3 +5,15 @@ sqlalchemy>=2.0.0
 psycopg2-binary>=2.9.5
 chinese-converter>=1.0.2
 numpy>=1.24.0
+email-validator>=2.0.0
+flask>=3.0.0
+flask-sqlalchemy>=3.0.0
+gunicorn>=20.0.0
+jieba>=0.42.1
+matplotlib>=3.0.0
+networkx>=3.0.0
+scikit-learn>=1.0.0
+werkzeug>=2.0.0
+
+# Do not try to install the local package
+.

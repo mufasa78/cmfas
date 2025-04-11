@@ -4,13 +4,19 @@ This allows for deployment on Streamlit Cloud
 """
 import streamlit as st
 import pandas as pd
-import plotly.express as px
-import plotly.graph_objects as go
-import numpy as np
-from sqlalchemy import create_engine, text
 import os
-from chinese_converter import to_simplified, to_traditional
 import json
+
+# Handle potential import errors gracefully
+try:
+    import plotly.express as px
+    import plotly.graph_objects as go
+    import numpy as np
+    from sqlalchemy import create_engine, text
+    from chinese_converter import to_simplified, to_traditional
+except ImportError as e:
+    st.error(f"Error importing required packages: {e}")
+    st.info("Please check your requirements.txt file and make sure all dependencies are installed.")
 
 # Database configuration
 DB_URL = os.environ.get("DATABASE_URL", "postgresql://neondb_owner:npg_Bnf7usLCGcZ5@ep-holy-tree-a5vv7bmk-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require")
@@ -526,6 +532,11 @@ def main():
     if is_health_check:
         st.success("Health check passed")
         return
+
+    # Display a message for Streamlit Cloud deployment
+    is_deployment = os.environ.get("STREAMLIT_DEPLOYMENT", "false").lower() == "true"
+    if is_deployment:
+        st.info("⚠️ This application is running on Streamlit Cloud. Some features may be limited.")
 
     if 'page' not in st.session_state:
         st.session_state.page = 'dashboard'
