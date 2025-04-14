@@ -16,32 +16,33 @@ let graphHeight = 600;
 function initKnowledgeGraph(elementId) {
     const container = document.getElementById(elementId);
     if (!container) return;
-    
+
     // Clear existing graph
     container.innerHTML = '';
-    
+
     // Set dimensions
     graphWidth = container.clientWidth;
     graphHeight = 600;
-    
+
     // Create SVG element
     graphSvg = d3.select(container).append('svg')
         .attr('width', graphWidth)
         .attr('height', graphHeight)
-        .attr('class', 'knowledge-graph');
-    
+        .attr('class', 'knowledge-graph')
+        .style('background-color', '#FFFFFF');
+
     // Add zoom functionality
     const zoom = d3.zoom()
         .scaleExtent([0.1, 4])
         .on('zoom', (event) => {
             graphSvg.select('g').attr('transform', event.transform);
         });
-    
+
     graphSvg.call(zoom);
-    
+
     // Create a container group for all graph elements
     graphSvg.append('g');
-    
+
     // Add loading indicator
     graphSvg.append('text')
         .attr('x', graphWidth / 2)
@@ -49,20 +50,20 @@ function initKnowledgeGraph(elementId) {
         .attr('text-anchor', 'middle')
         .attr('class', 'loading-text')
         .text('Loading Knowledge Graph...');
-    
+
     // Load graph data
     let dataUrl = '/api/knowledge-graph';
-    
+
     // Check for material or prescription filter
     const materialId = new URLSearchParams(window.location.search).get('material_id');
     const prescriptionId = new URLSearchParams(window.location.search).get('prescription_id');
-    
+
     if (materialId) {
         dataUrl += `?material_id=${materialId}`;
     } else if (prescriptionId) {
         dataUrl += `?prescription_id=${prescriptionId}`;
     }
-    
+
     fetchGraphData(dataUrl);
 }
 
@@ -76,7 +77,7 @@ function fetchGraphData(url) {
         .then(data => {
             // Remove loading indicator
             graphSvg.select('.loading-text').remove();
-            
+
             if (data.nodes.length === 0) {
                 // Show no data message
                 graphSvg.append('text')
@@ -87,17 +88,17 @@ function fetchGraphData(url) {
                     .text('No graph data available');
                 return;
             }
-            
+
             // Store nodes and links
             graphNodes = data.nodes;
             graphLinks = data.links;
-            
+
             // Render graph
             renderGraph();
         })
         .catch(error => {
             console.error('Error fetching graph data:', error);
-            
+
             // Remove loading indicator and show error
             graphSvg.select('.loading-text').remove();
             graphSvg.append('text')
@@ -119,9 +120,9 @@ function renderGraph() {
         .force('charge', d3.forceManyBody().strength(-300))
         .force('center', d3.forceCenter(graphWidth / 2, graphHeight / 2))
         .force('collision', d3.forceCollide().radius(60));
-    
+
     const container = graphSvg.select('g');
-    
+
     // Create links
     const link = container.selectAll('.link')
         .data(graphLinks)
@@ -131,7 +132,7 @@ function renderGraph() {
         .attr('stroke', d => getLinkColor(d.type))
         .attr('stroke-width', 1.5)
         .attr('stroke-opacity', 0.6);
-    
+
     // Create nodes
     const node = container.selectAll('.node')
         .data(graphNodes)
@@ -142,26 +143,29 @@ function renderGraph() {
             .on('start', dragStarted)
             .on('drag', dragged)
             .on('end', dragEnded));
-    
+
     // Add node circles
     node.append('circle')
         .attr('r', d => getNodeRadius(d))
         .attr('fill', d => getNodeColor(d.type))
         .attr('stroke', '#fff')
         .attr('stroke-width', 1.5);
-    
+
     // Add node labels
     node.append('text')
         .attr('dy', 4)
         .attr('text-anchor', 'middle')
         .text(d => d.name)
-        .attr('fill', '#fff')
-        .attr('font-size', '10px');
-    
+        .attr('fill', '#000000')
+        .attr('font-size', '10px')
+        .attr('font-weight', 'bold')
+        .attr('stroke', '#ffffff')
+        .attr('stroke-width', '0.5px');
+
     // Add tooltips
     node.append('title')
         .text(d => getNodeTooltip(d));
-    
+
     // Update positions on tick
     graphSimulation.on('tick', () => {
         link
@@ -169,11 +173,11 @@ function renderGraph() {
             .attr('y1', d => d.source.y)
             .attr('x2', d => d.target.x)
             .attr('y2', d => d.target.y);
-        
+
         node
             .attr('transform', d => `translate(${d.x},${d.y})`);
     });
-    
+
     // Add legend
     addGraphLegend();
 }
@@ -185,35 +189,35 @@ function addGraphLegend() {
     const legend = graphSvg.append('g')
         .attr('class', 'legend')
         .attr('transform', 'translate(20, 20)');
-    
+
     // Material node
     legend.append('circle')
         .attr('cx', 10)
         .attr('cy', 10)
         .attr('r', 8)
         .attr('fill', getNodeColor('material'));
-    
+
     legend.append('text')
         .attr('x', 25)
         .attr('y', 15)
         .text('Medicinal Material')
         .attr('fill', '#ccc')
         .attr('font-size', '12px');
-    
+
     // Prescription node
     legend.append('circle')
         .attr('cx', 10)
         .attr('cy', 40)
         .attr('r', 8)
         .attr('fill', getNodeColor('prescription'));
-    
+
     legend.append('text')
         .attr('x', 25)
         .attr('y', 45)
         .text('Prescription')
         .attr('fill', '#ccc')
         .attr('font-size', '12px');
-    
+
     // Contains link
     legend.append('line')
         .attr('x1', 0)
@@ -222,14 +226,14 @@ function addGraphLegend() {
         .attr('y2', 70)
         .attr('stroke', getLinkColor('contains'))
         .attr('stroke-width', 1.5);
-    
+
     legend.append('text')
         .attr('x', 25)
         .attr('y', 75)
         .text('Contains')
         .attr('fill', '#ccc')
         .attr('font-size', '12px');
-    
+
     // Interaction link
     legend.append('line')
         .attr('x1', 0)
@@ -238,7 +242,7 @@ function addGraphLegend() {
         .attr('y2', 100)
         .attr('stroke', getLinkColor('synergistic'))
         .attr('stroke-width', 1.5);
-    
+
     legend.append('text')
         .attr('x', 25)
         .attr('y', 105)
@@ -255,11 +259,11 @@ function addGraphLegend() {
 function getNodeColor(type) {
     switch (type) {
         case 'material':
-            return '#5470c6';
+            return '#4470c6'; // Blue for materials
         case 'prescription':
-            return '#91cc75';
+            return '#71cc55'; // Green for prescriptions
         default:
-            return '#909399';
+            return '#808080'; // Gray for other types
     }
 }
 
@@ -271,13 +275,13 @@ function getNodeColor(type) {
 function getLinkColor(type) {
     switch (type) {
         case 'contains':
-            return '#909399';
+            return '#808080'; // Gray for contains relationships
         case 'synergistic':
-            return '#67c23a';
+            return '#67c23a'; // Green for synergistic relationships
         case 'antagonistic':
-            return '#f56c6c';
+            return '#f56c6c'; // Red for antagonistic relationships
         default:
-            return '#e6a23c';
+            return '#e6a23c'; // Orange for other relationships
     }
 }
 
@@ -363,13 +367,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const graphContainer = document.getElementById('knowledge-graph');
     if (graphContainer) {
         initKnowledgeGraph('knowledge-graph');
-        
+
         // Add event listener for window resize
         window.addEventListener('resize', () => {
             graphWidth = graphContainer.clientWidth;
             if (graphSvg) {
                 graphSvg.attr('width', graphWidth);
-                
+
                 // Update center force if simulation exists
                 if (graphSimulation) {
                     graphSimulation.force('center', d3.forceCenter(graphWidth / 2, graphHeight / 2));

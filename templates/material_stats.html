@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "layout_base.html" %}
 
 {% block content %}
 <div class="row mb-4">
@@ -6,15 +6,14 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="mb-0">
-                    <i class="fas fa-chart-bar me-2"></i>Medicinal Material Usage Frequency
+                    <i class="fas fa-chart-bar me-2"></i>{{ t('material_usage') }}
                 </h5>
             </div>
             <div class="card-body">
                 <p>
-                    This visualization shows the frequency of use of each medicinal material across all prescriptions in the database.
-                    Materials that appear more frequently are essential components in traditional Chinese medicine.
+                    {{ t('usage_frequency_description', 'This visualization shows the frequency of use of each medicinal material across all prescriptions in the database. Materials that appear more frequently are essential components in traditional Chinese medicine.') }}
                 </p>
-                
+
                 <div class="chart-container" id="material-usage-chart"></div>
             </div>
         </div>
@@ -26,7 +25,7 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="mb-0">
-                    <i class="fas fa-chart-pie me-2"></i>Material Usage Distribution
+                    <i class="fas fa-chart-pie me-2"></i>{{ t('material_usage_distribution') }}
                 </h5>
             </div>
             <div class="card-body">
@@ -34,31 +33,31 @@
             </div>
         </div>
     </div>
-    
+
     <div class="col-md-6">
         <div class="card">
             <div class="card-header">
                 <h5 class="mb-0">
-                    <i class="fas fa-info-circle me-2"></i>Material Usage Insights
+                    <i class="fas fa-info-circle me-2"></i>{{ t('material_usage_insights') }}
                 </h5>
             </div>
             <div class="card-body">
-                <h5>Key Insights:</h5>
+                <h5>{{ t('key_insights') }}</h5>
                 <ul>
-                    <li>The top used materials often indicate core components in traditional formulations</li>
-                    <li>Materials with high usage frequency typically have broad therapeutic applications</li>
-                    <li>Understanding usage patterns helps in optimizing new formulations</li>
-                    <li>Regional variations may affect material availability and prescription customization</li>
+                    <li>{{ t('insight_1') }}</li>
+                    <li>{{ t('insight_2') }}</li>
+                    <li>{{ t('insight_3') }}</li>
+                    <li>{{ t('insight_4') }}</li>
                 </ul>
-                
+
                 <div class="alert alert-info mt-3">
                     <i class="fas fa-lightbulb me-2"></i>
-                    <strong>Tip:</strong> Compare material usage with efficacy categories to identify specialized materials for specific conditions.
+                    <strong>{{ t('tip') }}</strong> {{ t('usage_tip') }}
                 </div>
-                
+
                 <div class="d-grid gap-2 mt-3">
                     <a href="{{ url_for('top_prescriptions') }}" class="btn btn-outline-primary">
-                        <i class="fas fa-list-ol me-2"></i>View Top Prescriptions
+                        <i class="fas fa-list-ol me-2"></i>{{ t('view_top_prescriptions') }}
                     </a>
                 </div>
             </div>
@@ -71,15 +70,14 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="mb-0">
-                    <i class="fas fa-project-diagram me-2"></i>Material Clustering
+                    <i class="fas fa-project-diagram me-2"></i>{{ t('material_clustering') }}
                 </h5>
             </div>
             <div class="card-body">
                 <p>
-                    This visualization clusters medicinal materials based on their properties, flavors, and usage patterns.
-                    Similar materials are grouped together, revealing natural categories within Chinese medicine pharmacology.
+                    {{ t('clustering_description') }}
                 </p>
-                
+
                 <div class="chart-container" id="material-clustering-chart"></div>
             </div>
         </div>
@@ -92,10 +90,10 @@
     document.addEventListener('DOMContentLoaded', function() {
         // Initialize material usage chart
         initMaterialUsageChart('material-usage-chart');
-        
+
         // Initialize material usage pie chart
         initMaterialUsagePieChart('material-usage-pie-chart');
-        
+
         // Initialize material clustering visualization
         initMaterialClustering('material-clustering-chart');
     });

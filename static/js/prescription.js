@@ -9,19 +9,19 @@ function initPrescriptionForm() {
     // Get the materials select element
     const materialsSelect = document.getElementById('materials');
     if (!materialsSelect) return;
-    
+
     // Initialize Select2 for materials with search and multiple selection
     $(materialsSelect).select2({
-        placeholder: 'Select medicinal materials',
+        placeholder: getTranslation('select_medicinal_materials'),
         allowClear: true,
         multiple: true,
         width: '100%',
         theme: 'bootstrap-5'
     });
-    
+
     // Initialize Select2 for efficacy categories with tags
     $('#efficacy_categories').select2({
-        placeholder: 'Enter efficacy categories',
+        placeholder: getTranslation('enter_efficacy_categories'),
         tags: true,
         tokenSeparators: [','],
         width: '100%',
@@ -36,18 +36,18 @@ function initSearchForm() {
     // Get the material select element
     const materialSelect = document.getElementById('material');
     if (!materialSelect) return;
-    
+
     // Initialize Select2 for material with search
     $(materialSelect).select2({
-        placeholder: 'Select a medicinal material',
+        placeholder: getTranslation('select_a_medicinal_material'),
         allowClear: true,
         width: '100%',
         theme: 'bootstrap-5'
     });
-    
+
     // Initialize Select2 for category
     $('#category').select2({
-        placeholder: 'Select an efficacy category',
+        placeholder: getTranslation('select_an_efficacy_category'),
         allowClear: true,
         width: '100%',
         theme: 'bootstrap-5'
@@ -62,20 +62,20 @@ function loadPrescriptionDetails(prescriptionId) {
     // Show loading indicator
     const detailsContainer = document.getElementById('prescription-details');
     if (!detailsContainer) return;
-    
+
     detailsContainer.innerHTML = `
         <div class="text-center">
             <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
+                <span class="visually-hidden">${getTranslation('loading')}</span>
             </div>
         </div>
     `;
-    
+
     // Fetch prescription details
     fetch(`/api/prescription/${prescriptionId}`)
         .then(response => {
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                throw new Error(getTranslation('network_error'));
             }
             return response.json();
         })
@@ -88,43 +88,43 @@ function loadPrescriptionDetails(prescriptionId) {
                             <h5 class="card-title">${material.name}</h5>
                             <div class="card-text">
                                 <small class="text-muted">
-                                    Property: ${material.property || 'N/A'} | 
-                                    Flavor: ${material.flavor || 'N/A'} | 
-                                    Meridian: ${material.meridian || 'N/A'}
+                                    ${getTranslation('property_label')}: ${material.property || getTranslation('not_available')} |
+                                    ${getTranslation('flavor_label')}: ${material.flavor || getTranslation('not_available')} |
+                                    ${getTranslation('meridian_label')}: ${material.meridian || getTranslation('not_available')}
                                 </small>
                             </div>
                         </div>
                     </div>
                 </div>
             `).join('');
-            
+
             // Generate HTML for efficacy categories
-            const categoriesHtml = prescription.efficacy_categories.map(category => 
+            const categoriesHtml = prescription.efficacy_categories.map(category =>
                 `<span class="badge bg-info me-1">${category.name}</span>`
             ).join('');
-            
+
             // Update details container
             detailsContainer.innerHTML = `
                 <div class="row mb-4">
                     <div class="col-md-12">
                         <h3>${prescription.name}</h3>
-                        <p>${prescription.description || 'No description available.'}</p>
+                        <p>${prescription.description || getTranslation('no_description')}</p>
                         <div class="mb-3">
-                            <strong>Efficacy:</strong> ${prescription.efficacy || 'N/A'}
+                            <strong>${getTranslation('efficacy_label')}:</strong> ${prescription.efficacy || getTranslation('not_available')}
                         </div>
                         <div class="mb-3">
-                            <strong>Categories:</strong> 
-                            ${categoriesHtml || '<span class="text-muted">None specified</span>'}
+                            <strong>${getTranslation('categories_label')}:</strong>
+                            ${categoriesHtml || `<span class="text-muted">${getTranslation('none_specified')}</span>`}
                         </div>
                     </div>
                 </div>
-                
-                <h4>Medicinal Materials</h4>
+
+                <h4>${getTranslation('medicinal_materials_heading')}</h4>
                 <div class="row">
-                    ${materialsHtml || '<div class="col-12"><p class="text-muted">No materials found for this prescription.</p></div>'}
+                    ${materialsHtml || `<div class="col-12"><p class="text-muted">${getTranslation('no_materials')}</p></div>`}
                 </div>
             `;
-            
+
             // Scroll to details
             detailsContainer.scrollIntoView({ behavior: 'smooth' });
         })
@@ -132,7 +132,7 @@ function loadPrescriptionDetails(prescriptionId) {
             console.error('Error fetching prescription details:', error);
             detailsContainer.innerHTML = `
                 <div class="alert alert-danger" role="alert">
-                    Failed to load prescription details. Please try again.
+                    ${getTranslation('load_error')}
                 </div>
             `;
         });
@@ -145,10 +145,10 @@ function initFormulaForm() {
     // Get the base materials select element
     const baseMaterialsSelect = document.getElementById('base_materials');
     if (!baseMaterialsSelect) return;
-    
+
     // Initialize Select2 for base materials with search and multiple selection
     $(baseMaterialsSelect).select2({
-        placeholder: 'Select base materials (optional)',
+        placeholder: getTranslation('select_base_materials'),
         allowClear: true,
         multiple: true,
         width: '100%',
@@ -163,9 +163,9 @@ function validateFileUpload() {
     const fileInput = document.getElementById('file');
     const importType = document.getElementById('import_type');
     const submitBtn = document.getElementById('upload_btn');
-    
+
     if (!fileInput || !importType || !submitBtn) return;
-    
+
     // Enable/disable submit button based on form validity
     function updateSubmitButton() {
         if (fileInput.files.length > 0 && importType.value) {
@@ -174,10 +174,10 @@ function validateFileUpload() {
             submitBtn.disabled = true;
         }
     }
-    
+
     fileInput.addEventListener('change', updateSubmitButton);
     importType.addEventListener('change', updateSubmitButton);
-    
+
     // Initial check
     updateSubmitButton();
 }
@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initSearchForm();
     initFormulaForm();
     validateFileUpload();
-    
+
     // Check if we need to load prescription details
     const prescriptionId = new URLSearchParams(window.location.search).get('view_prescription');
     if (prescriptionId) {

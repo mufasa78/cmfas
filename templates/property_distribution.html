@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "layout_base.html" %}
 
 {% block content %}
 <div class="row mb-4">
@@ -6,29 +6,26 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="mb-0">
-                    <i class="fas fa-info-circle me-2"></i>About Properties, Flavors, and Meridians
+                    <i class="fas fa-info-circle me-2"></i>{{ t('property_distribution') }}
                 </h5>
             </div>
             <div class="card-body">
                 <p>
-                    In traditional Chinese medicine, medicinal materials are classified by three key attributes:
+                    {{ t('tcm_attributes_intro') }}
                 </p>
                 <ul>
                     <li>
-                        <strong>Five Properties (五性):</strong> Cold (寒), Hot (热), Warm (温), Cool (凉), and Neutral (平). 
-                        These describe the material's effect on the body's temperature balance.
+                        <strong>{{ t('five_properties') }}</strong> {{ t('five_properties_desc') }}
                     </li>
                     <li>
-                        <strong>Five Flavors (五味):</strong> Sour (酸), Bitter (苦), Sweet (甘), Spicy (辛), and Salty (咸).
-                        These flavors correspond to therapeutic actions and target organs.
+                        <strong>{{ t('five_flavors') }}</strong> {{ t('five_flavors_desc') }}
                     </li>
                     <li>
-                        <strong>Meridian Tropism (归经):</strong> Indicates which organ/meridian system the herb primarily affects,
-                        such as Lung, Liver, Heart, Spleen, Kidney, etc.
+                        <strong>{{ t('meridian_tropism') }}</strong> {{ t('meridian_tropism_desc') }}
                     </li>
                 </ul>
                 <p>
-                    Understanding these distributions helps practitioners create balanced prescriptions targeting specific conditions.
+                    {{ t('distribution_help') }}
                 </p>
             </div>
         </div>
@@ -41,7 +38,7 @@
         <div class="card h-100">
             <div class="card-header">
                 <h5 class="mb-0">
-                    <i class="fas fa-thermometer-half me-2"></i>Five Properties Distribution (五性)
+                    <i class="fas fa-thermometer-half me-2"></i>{{ t('five_properties_distribution') }}
                 </h5>
             </div>
             <div class="card-body">
@@ -49,19 +46,19 @@
                 <div class="chart-container small-chart" id="property-chart"></div>
                 {% else %}
                 <div class="alert alert-info">
-                    <i class="fas fa-info-circle me-2"></i>No property data available. Please import medicinal material data with property information.
+                    <i class="fas fa-info-circle me-2"></i>{{ t('no_property_data') }}
                 </div>
                 {% endif %}
             </div>
         </div>
     </div>
-    
+
     <!-- Five Flavors Chart -->
     <div class="col-md-6 mb-4">
         <div class="card h-100">
             <div class="card-header">
                 <h5 class="mb-0">
-                    <i class="fas fa-utensils me-2"></i>Five Flavors Distribution (五味)
+                    <i class="fas fa-utensils me-2"></i>{{ t('five_flavors_distribution') }}
                 </h5>
             </div>
             <div class="card-body">
@@ -69,7 +66,7 @@
                 <div class="chart-container small-chart" id="flavor-chart"></div>
                 {% else %}
                 <div class="alert alert-info">
-                    <i class="fas fa-info-circle me-2"></i>No flavor data available. Please import medicinal material data with flavor information.
+                    <i class="fas fa-info-circle me-2"></i>{{ t('no_flavor_data') }}
                 </div>
                 {% endif %}
             </div>
@@ -83,7 +80,7 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="mb-0">
-                    <i class="fas fa-project-diagram me-2"></i>Meridian Distribution (归经)
+                    <i class="fas fa-project-diagram me-2"></i>{{ t('meridian_distribution') }}
                 </h5>
             </div>
             <div class="card-body">
@@ -91,7 +88,7 @@
                 <div class="chart-container" id="meridian-chart"></div>
                 {% else %}
                 <div class="alert alert-info">
-                    <i class="fas fa-info-circle me-2"></i>No meridian data available. Please import medicinal material data with meridian information.
+                    <i class="fas fa-info-circle me-2"></i>{{ t('no_meridian_data') }}
                 </div>
                 {% endif %}
             </div>
@@ -104,22 +101,22 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="mb-0">
-                    <i class="fas fa-table me-2"></i>Property, Flavor, and Meridian Data
+                    <i class="fas fa-table me-2"></i>{{ t('property_flavor_meridian_data') }}
                 </h5>
             </div>
             <div class="card-body">
                 <ul class="nav nav-tabs" id="propertyTabs" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="properties-tab" data-bs-toggle="tab" data-bs-target="#properties-content" type="button" role="tab" aria-controls="properties" aria-selected="true">Properties</button>
+                        <button class="nav-link active" id="properties-tab" data-bs-toggle="tab" data-bs-target="#properties-content" type="button" role="tab" aria-controls="properties" aria-selected="true">{{ t('properties_tab') }}</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="flavors-tab" data-bs-toggle="tab" data-bs-target="#flavors-content" type="button" role="tab" aria-controls="flavors" aria-selected="false">Flavors</button>
+                        <button class="nav-link" id="flavors-tab" data-bs-toggle="tab" data-bs-target="#flavors-content" type="button" role="tab" aria-controls="flavors" aria-selected="false">{{ t('flavors_tab') }}</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="meridians-tab" data-bs-toggle="tab" data-bs-target="#meridians-content" type="button" role="tab" aria-controls="meridians" aria-selected="false">Meridians</button>
+                        <button class="nav-link" id="meridians-tab" data-bs-toggle="tab" data-bs-target="#meridians-content" type="button" role="tab" aria-controls="meridians" aria-selected="false">{{ t('meridians_tab') }}</button>
                     </li>
                 </ul>
-                
+
                 <div class="tab-content p-3" id="propertyTabContent">
                     <!-- Properties Table -->
                     <div class="tab-pane fade show active" id="properties-content" role="tabpanel" aria-labelledby="properties-tab">
@@ -128,9 +125,9 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Property</th>
-                                        <th>Count</th>
-                                        <th>Percentage</th>
+                                        <th>{{ t('property_column') }}</th>
+                                        <th>{{ t('count_column') }}</th>
+                                        <th>{{ t('percentage_column') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -146,10 +143,10 @@
                             </table>
                         </div>
                         {% else %}
-                        <p class="text-muted">No property data available.</p>
+                        <p class="text-muted">{{ t('no_data_available') }}</p>
                         {% endif %}
                     </div>
-                    
+
                     <!-- Flavors Table -->
                     <div class="tab-pane fade" id="flavors-content" role="tabpanel" aria-labelledby="flavors-tab">
                         {% if flavors %}
@@ -157,9 +154,9 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Flavor</th>
-                                        <th>Count</th>
-                                        <th>Percentage</th>
+                                        <th>{{ t('flavor_column') }}</th>
+                                        <th>{{ t('count_column') }}</th>
+                                        <th>{{ t('percentage_column') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -175,10 +172,10 @@
                             </table>
                         </div>
                         {% else %}
-                        <p class="text-muted">No flavor data available.</p>
+                        <p class="text-muted">{{ t('no_data_available') }}</p>
                         {% endif %}
                     </div>
-                    
+
                     <!-- Meridians Table -->
                     <div class="tab-pane fade" id="meridians-content" role="tabpanel" aria-labelledby="meridians-tab">
                         {% if meridians %}
@@ -186,9 +183,9 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Meridian</th>
-                                        <th>Count</th>
-                                        <th>Percentage</th>
+                                        <th>{{ t('meridian_column') }}</th>
+                                        <th>{{ t('count_column') }}</th>
+                                        <th>{{ t('percentage_column') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -204,7 +201,7 @@
                             </table>
                         </div>
                         {% else %}
-                        <p class="text-muted">No meridian data available.</p>
+                        <p class="text-muted">{{ t('no_data_available') }}</p>
                         {% endif %}
                     </div>
                 </div>
@@ -221,12 +218,12 @@
         // Initialize property chart
         initPropertyChart('property-chart', {{ properties|tojson }});
         {% endif %}
-        
+
         {% if flavors %}
         // Initialize flavor chart
         initFlavorChart('flavor-chart', {{ flavors|tojson }});
         {% endif %}
-        
+
         {% if meridians %}
         // Initialize meridian chart
         initMeridianChart('meridian-chart', {{ meridians|tojson }});

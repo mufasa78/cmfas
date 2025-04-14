@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "layout_base.html" %}
 
 {% block content %}
 <div class="row mb-4">
@@ -6,26 +6,26 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="mb-0">
-                    <i class="fas fa-search me-2"></i>Search Prescriptions
+                    <i class="fas fa-search me-2"></i>{{ t('search_prescriptions') }}
                 </h5>
             </div>
             <div class="card-body">
                 <form method="GET" action="{{ url_for('prescription_search') }}">
                     <div class="row">
                         <div class="col-md-3 mb-3">
-                            <label for="name" class="form-label">Prescription Name</label>
+                            <label for="name" class="form-label">{{ t('prescription_name') }}</label>
                             <input type="text" class="form-control" id="name" name="name" value="{{ query.name }}">
                         </div>
-                        
+
                         <div class="col-md-3 mb-3">
-                            <label for="efficacy" class="form-label">Efficacy</label>
+                            <label for="efficacy" class="form-label">{{ t('efficacy') }}</label>
                             <input type="text" class="form-control" id="efficacy" name="efficacy" value="{{ query.efficacy }}">
                         </div>
-                        
+
                         <div class="col-md-3 mb-3">
-                            <label for="material" class="form-label">Contains Material</label>
+                            <label for="material" class="form-label">{{ t('search_by_material') }}</label>
                             <select class="form-control" id="material" name="material">
-                                <option value="">Any Material</option>
+                                <option value="">{{ t('material') }}</option>
                                 {% for material in materials %}
                                     <option value="{{ material.name }}" {% if material.name == query.material %}selected{% endif %}>
                                         {{ material.name }}
@@ -33,11 +33,11 @@
                                 {% endfor %}
                             </select>
                         </div>
-                        
+
                         <div class="col-md-3 mb-3">
-                            <label for="category" class="form-label">Efficacy Category</label>
+                            <label for="category" class="form-label">{{ t('efficacy_categories') }}</label>
                             <select class="form-control" id="category" name="category">
-                                <option value="">Any Category</option>
+                                <option value="">{{ t('select_category') }}</option>
                                 {% for category in categories %}
                                     <option value="{{ category.name }}" {% if category.name == query.category %}selected{% endif %}>
                                         {{ category.name }}
@@ -46,13 +46,13 @@
                             </select>
                         </div>
                     </div>
-                    
+
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                         <a href="{{ url_for('prescription_search') }}" class="btn btn-outline-secondary">
-                            <i class="fas fa-undo me-1"></i> Reset
+                            <i class="fas fa-undo me-1"></i> {{ t('reset') }}
                         </a>
                         <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-search me-1"></i> Search
+                            <i class="fas fa-search me-1"></i> {{ t('search') }}
                         </button>
                     </div>
                 </form>
@@ -67,7 +67,7 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="mb-0">
-                    <i class="fas fa-list me-2"></i>Search Results
+                    <i class="fas fa-list me-2"></i>{{ t('search_results') }}
                     {% if results %}
                         <span class="badge bg-primary ms-2">{{ results|length }} found</span>
                     {% endif %}
@@ -79,11 +79,11 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>Prescription Name</th>
-                                    <th>Efficacy</th>
-                                    <th>Materials</th>
-                                    <th>Categories</th>
-                                    <th>Actions</th>
+                                    <th>{{ t('prescription_name') }}</th>
+                                    <th>{{ t('efficacy') }}</th>
+                                    <th>{{ t('medicinal_materials') }}</th>
+                                    <th>{{ t('efficacy_categories') }}</th>
+                                    <th>{{ t('actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -96,7 +96,7 @@
                                         {% if prescription.materials|length > 0 %}
                                             {{ prescription.materials[0].name }}
                                             {% if prescription.materials|length > 1 %}
-                                                <span class="text-muted">+ {{ prescription.materials|length - 1 }} more</span>
+                                                <span class="text-muted">+ {{ prescription.materials|length - 1 }}</span>
                                             {% endif %}
                                         {% endif %}
                                     </td>
@@ -107,10 +107,10 @@
                                     </td>
                                     <td>
                                         <a href="javascript:void(0)" onclick="loadPrescriptionDetails({{ prescription.id }})" class="btn btn-sm btn-outline-info">
-                                            <i class="fas fa-eye"></i> View
+                                            <i class="fas fa-eye"></i> {{ t('view_details') }}
                                         </a>
                                         <a href="{{ url_for('knowledge_graph') }}?prescription_id={{ prescription.id }}" class="btn btn-sm btn-outline-primary">
-                                            <i class="fas fa-project-diagram"></i> Graph
+                                            <i class="fas fa-project-diagram"></i> {{ t('knowledge_graph') }}
                                         </a>
                                     </td>
                                 </tr>
@@ -120,12 +120,11 @@
                     </div>
                 {% elif query.name or query.efficacy or query.material or query.category %}
                     <div class="alert alert-info">
-                        <i class="fas fa-info-circle me-2"></i>No prescriptions found matching your search criteria.
+                        <i class="fas fa-info-circle me-2"></i>{{ t('no_results') }}
                     </div>
                 {% else %}
                     <p class="text-muted">
-                        Use the search form above to find prescriptions. You can search by name, efficacy, 
-                        containing specific medicinal materials, or by efficacy category.
+                        {{ t('search_criteria') }}
                     </p>
                 {% endif %}
             </div>
@@ -142,7 +141,7 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="mb-0">
-                    <i class="fas fa-lightbulb me-2"></i>Search Tips
+                    <i class="fas fa-lightbulb me-2"></i>{{ t('helpful_tips') }}
                 </h5>
             </div>
             <div class="card-body">
@@ -150,31 +149,31 @@
                     <div class="col-md-4">
                         <div class="card bg-dark text-white mb-3">
                             <div class="card-body">
-                                <h5 class="card-title"><i class="fas fa-font me-2"></i>Name Search</h5>
+                                <h5 class="card-title"><i class="fas fa-font me-2"></i>{{ t('search_by_name') }}</h5>
                                 <p class="card-text">
-                                    Partial matches work. For example, searching for "tang" will find all prescriptions with "tang" in their name.
+                                    {{ t('search_by_name') }}
                                 </p>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-md-4">
                         <div class="card bg-dark text-white mb-3">
                             <div class="card-body">
-                                <h5 class="card-title"><i class="fas fa-list-alt me-2"></i>Efficacy Search</h5>
+                                <h5 class="card-title"><i class="fas fa-list-alt me-2"></i>{{ t('search_by_efficacy') }}</h5>
                                 <p class="card-text">
-                                    Search for symptoms or conditions like "cough", "fever", or "blood circulation".
+                                    {{ t('search_by_efficacy') }}
                                 </p>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-md-4">
                         <div class="card bg-dark text-white mb-3">
                             <div class="card-body">
-                                <h5 class="card-title"><i class="fas fa-filter me-2"></i>Combine Filters</h5>
+                                <h5 class="card-title"><i class="fas fa-filter me-2"></i>{{ t('search_by_category') }}</h5>
                                 <p class="card-text">
-                                    For more precise results, combine multiple search criteria like material and category.
+                                    {{ t('search_by_category') }}
                                 </p>
                             </div>
                         </div>
@@ -192,7 +191,7 @@
         // Check if we need to load prescription details from URL parameter
         const urlParams = new URLSearchParams(window.location.search);
         const viewPrescription = urlParams.get('view_prescription');
-        
+
         if (viewPrescription) {
             loadPrescriptionDetails(viewPrescription);
         }

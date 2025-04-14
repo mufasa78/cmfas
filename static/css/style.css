@@ -5,23 +5,55 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    color: #212529;
+    background-color: #FFFFFF;
 }
 
 .content-wrapper {
     flex: 1;
 }
 
+/* Text styling for light mode */
+.text-dark {
+    color: #212529 !important;
+}
+
+/* Ensure all text has good contrast */
+p, h1, h2, h3, h4, h5, h6, .card-text, .card-title, .nav-link, .dropdown-item {
+    color: #212529;
+}
+
+/* Form control text styling for light mode */
+.form-control, .form-select {
+    color: #212529 !important;
+}
+
+.form-control::placeholder, .form-select::placeholder {
+    color: #6c757d !important;
+}
+
 /* Navbar styling */
 .navbar {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa !important;
+}
+
+.navbar-brand, .nav-link {
+    color: #212529 !important;
+}
+
+.navbar-toggler-icon {
+    filter: none;
 }
 
 /* Card styling */
 .card {
     margin-bottom: 1.5rem;
-    border: none;
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
     transition: all 0.3s ease;
+    background-color: #FFFFFF !important;
+    color: #212529;
 }
 
 .card:hover {
@@ -29,8 +61,13 @@ body {
 }
 
 .card-header {
-    background-color: rgba(0, 0, 0, 0.05);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.03) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    color: #212529;
+}
+
+.card-body {
+    color: #212529;
 }
 
 /* Statistics cards */
@@ -75,21 +112,21 @@ body {
 /* Table styling */
 .table th {
     border-top: none;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 }
 
 .table-hover tbody tr:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 /* Form styling */
 .form-control, .form-select {
-    background-color: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: #FFFFFF;
+    border: 1px solid #ced4da;
 }
 
 .form-control:focus, .form-select:focus {
-    background-color: rgba(0, 0, 0, 0.25);
+    background-color: #FFFFFF;
     border-color: var(--bs-primary);
     box-shadow: 0 0 0 0.2rem rgba(var(--bs-primary-rgb), 0.25);
 }
@@ -108,17 +145,32 @@ body {
 
 /* Footer styling */
 .footer {
-    background-color: rgba(0, 0, 0, 0.15);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: #f8f9fa;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
     padding: 1rem 0;
     margin-top: 2rem;
+}
+
+/* Chart container styling */
+.chart-container {
+    height: 400px;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 0.25rem;
+    background-color: #FFFFFF;
+    margin-bottom: 1rem;
+}
+
+.small-chart {
+    height: 300px;
 }
 
 /* Knowledge graph styling */
 .graph-container {
     height: 600px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 0.25rem;
+    background-color: #FFFFFF;
 }
 
 .graph-legend {
@@ -132,14 +184,89 @@ body {
     .stat-value {
         font-size: 1.5rem;
     }
-    
+
     .stat-icon {
         font-size: 2rem;
     }
-    
+
     .navbar-nav {
         margin-top: 1rem;
     }
+}
+
+/* Select2 styling for light theme */
+.select2-container--bootstrap-5 .select2-selection {
+    background-color: #FFFFFF !important;
+    border: 1px solid #ced4da !important;
+    color: #212529 !important;
+}
+
+.select2-container--bootstrap-5 .select2-selection--single .select2-selection__rendered {
+    color: #212529 !important;
+}
+
+.select2-container--bootstrap-5 .select2-selection__placeholder {
+    color: #6c757d !important;
+}
+
+.select2-container--bootstrap-5 .select2-dropdown {
+    background-color: #FFFFFF !important;
+    border: 1px solid #ced4da !important;
+}
+
+.select2-container--bootstrap-5 .select2-results__option {
+    color: #212529 !important;
+}
+
+.select2-container--bootstrap-5 .select2-results__option--highlighted {
+    background-color: #f8f9fa !important;
+}
+
+.select2-container--bootstrap-5 .select2-results__option--selected {
+    background-color: rgba(13, 110, 253, 0.1) !important;
+}
+
+.select2-container--bootstrap-5 .select2-search__field {
+    background-color: #FFFFFF !important;
+    color: #212529 !important;
+    border: 1px solid #ced4da !important;
+}
+
+.select2-container--bootstrap-5 .select2-selection__choice {
+    background-color: rgba(13, 110, 253, 0.1) !important;
+    color: #212529 !important;
+    border: 1px solid rgba(13, 110, 253, 0.2) !important;
+}
+
+.select2-container--bootstrap-5 .select2-selection__choice__remove {
+    color: #6c757d !important;
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.select2-container--bootstrap-5 .select2-selection__choice__remove:hover {
+    color: #212529 !important;
+    background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Make dropdown arrow visible */
+.select2-container--bootstrap-5 .select2-selection--single .select2-selection__arrow b {
+    border-color: #212529 transparent transparent transparent !important;
+}
+
+.select2-container--bootstrap-5.select2-container--open .select2-selection--single .select2-selection__arrow b {
+    border-color: transparent transparent #212529 transparent !important;
+}
+
+/* Make clear button visible */
+.select2-container--bootstrap-5 .select2-selection--single .select2-selection__clear,
+.select2-container--bootstrap-5 .select2-selection--multiple .select2-selection__clear {
+    color: #6c757d !important;
+}
+
+.select2-container--bootstrap-5 .select2-selection--single .select2-selection__clear:hover,
+.select2-container--bootstrap-5 .select2-selection--multiple .select2-selection__clear:hover {
+    color: #212529 !important;
 }
 
 /* Custom navbar styling for cleaner look */
@@ -158,40 +285,45 @@ body {
 }
 
 .navbar .nav-link.active {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .navbar .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(0, 0, 0, 0.03);
 }
 
-.navbar-dark .navbar-nav .nav-link {
-    color: rgba(255, 255, 255, 0.75);
+.navbar-light .navbar-nav .nav-link {
+    color: rgba(0, 0, 0, 0.7);
 }
 
-.navbar-dark .navbar-nav .nav-link:hover,
-.navbar-dark .navbar-nav .nav-link.active {
-    color: rgba(255, 255, 255, 1);
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active {
+    color: rgba(0, 0, 0, 0.9);
 }
 
 /* Special styling for dropdown menus */
 .dropdown-menu {
-    border: none;
+    border: 1px solid rgba(0, 0, 0, 0.15);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
     border-radius: 0.25rem;
     padding: 0.5rem 0;
-    background-color: #343a40; /* Dark background for dropdown menu */
+    background-color: #FFFFFF; /* Light background for dropdown menu */
 }
 
 .dropdown-item {
     padding: 0.5rem 1rem;
     transition: all 0.2s ease;
-    color: rgba(255, 255, 255, 0.85); /* Light text color for dropdown items */
+    color: #212529 !important; /* Dark text color for dropdown items */
 }
 
 .dropdown-item:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #ffffff; /* Brighter text on hover */
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #16181b !important; /* Darker text on hover */
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    background-color: #0d6efd;
+    color: #ffffff !important;
 }
 
 .dropdown-item i {

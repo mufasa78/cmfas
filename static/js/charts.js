@@ -21,8 +21,8 @@ function initProvinceChart(elementId, data) {
         provinceChart.dispose();
     }
 
-    // Initialize chart
-    provinceChart = echarts.init(document.getElementById(elementId));
+    // Initialize chart with light theme
+    provinceChart = echarts.init(document.getElementById(elementId), 'light-theme');
 
     // Convert data to array format for ECharts
     const provinces = Object.keys(data);
@@ -47,7 +47,7 @@ function initProvinceChart(elementId, data) {
             text: 'Medicinal Materials by Province',
             left: 'center',
             textStyle: {
-                color: '#ccc'
+                color: '#333'
             }
         },
         tooltip: {
@@ -69,11 +69,11 @@ function initProvinceChart(elementId, data) {
             axisLabel: {
                 interval: 0,
                 rotate: 45,
-                color: '#ccc'
+                color: '#333'
             },
             axisLine: {
                 lineStyle: {
-                    color: '#ccc'
+                    color: '#333'
                 }
             }
         },
@@ -81,14 +81,14 @@ function initProvinceChart(elementId, data) {
             type: 'value',
             name: 'Number of Materials',
             nameTextStyle: {
-                color: '#ccc'
+                color: '#333'
             },
             axisLabel: {
-                color: '#ccc'
+                color: '#333'
             },
             axisLine: {
                 lineStyle: {
-                    color: '#ccc'
+                    color: '#333'
                 }
             }
         },
@@ -136,8 +136,8 @@ function initMaterialUsageChart(elementId) {
         materialUsageChart.dispose();
     }
 
-    // Initialize chart
-    materialUsageChart = echarts.init(document.getElementById(elementId));
+    // Initialize chart with light theme
+    materialUsageChart = echarts.init(document.getElementById(elementId), 'light-theme');
 
     // Show loading animation first
     materialUsageChart.showLoading();
@@ -158,7 +158,7 @@ function initMaterialUsageChart(elementId) {
                     text: 'Top 20 Medicinal Materials by Usage Frequency',
                     left: 'center',
                     textStyle: {
-                        color: '#ccc'
+                        color: '#333'
                     }
                 },
                 tooltip: {
@@ -171,7 +171,7 @@ function initMaterialUsageChart(elementId) {
                     data: ['Usage Frequency'],
                     bottom: 10,
                     textStyle: {
-                        color: '#ccc'
+                        color: '#333'
                     }
                 },
                 grid: {
@@ -186,11 +186,11 @@ function initMaterialUsageChart(elementId) {
                     axisLabel: {
                         interval: 0,
                         rotate: 45,
-                        color: '#ccc'
+                        color: '#333'
                     },
                     axisLine: {
                         lineStyle: {
-                            color: '#ccc'
+                            color: '#333'
                         }
                     }
                 },
@@ -198,14 +198,14 @@ function initMaterialUsageChart(elementId) {
                     type: 'value',
                     name: 'Frequency',
                     nameTextStyle: {
-                        color: '#ccc'
+                        color: '#333'
                     },
                     axisLabel: {
-                        color: '#ccc'
+                        color: '#333'
                     },
                     axisLine: {
                         lineStyle: {
-                            color: '#ccc'
+                            color: '#333'
                         }
                     }
                 },
@@ -265,29 +265,29 @@ function initMaterialUsagePieChart(elementId) {
     // Check if chart instance already exists
     const chartElement = document.getElementById(elementId);
     if (!chartElement) return;
-    
-    const pieChart = echarts.init(chartElement);
-    
+
+    const pieChart = echarts.init(chartElement, 'light-theme');
+
     // Show loading animation first
     pieChart.showLoading();
-    
+
     // Fetch material usage data
     fetch('/api/material-usage')
         .then(response => response.json())
         .then(data => {
             // Hide loading animation
             pieChart.hideLoading();
-            
+
             // Limit to top 10 for better pie chart visualization
             const limitedData = data.slice(0, 10);
-            
+
             // Configure chart options
             const options = {
                 title: {
                     text: 'Top 10 Medicinal Materials',
                     left: 'center',
                     textStyle: {
-                        color: '#ccc'
+                        color: '#333'
                     }
                 },
                 tooltip: {
@@ -300,7 +300,7 @@ function initMaterialUsagePieChart(elementId) {
                     top: 'middle',
                     data: limitedData.map(item => item.name),
                     textStyle: {
-                        color: '#ccc'
+                        color: '#333'
                     }
                 },
                 series: [
@@ -335,7 +335,7 @@ function initMaterialUsagePieChart(elementId) {
                     }
                 ]
             };
-            
+
             // Set options and render chart
             pieChart.setOption(options);
         })
@@ -352,7 +352,7 @@ function initMaterialUsagePieChart(elementId) {
                 }
             });
         });
-    
+
     // Add resize event listener
     window.addEventListener('resize', () => {
         pieChart.resize();
@@ -370,8 +370,8 @@ function initPropertyChart(elementId, data) {
         propertyChart.dispose();
     }
 
-    // Initialize chart
-    propertyChart = echarts.init(document.getElementById(elementId));
+    // Initialize chart with light theme
+    propertyChart = echarts.init(document.getElementById(elementId), 'light-theme');
 
     // Convert data to array format for ECharts
     const properties = Object.keys(data);
@@ -386,7 +386,7 @@ function initPropertyChart(elementId, data) {
             text: 'Distribution of Five Properties (五性)',
             left: 'center',
             textStyle: {
-                color: '#ccc'
+                color: '#333'
             }
         },
         tooltip: {
@@ -399,7 +399,7 @@ function initPropertyChart(elementId, data) {
             top: 'middle',
             data: properties,
             textStyle: {
-                color: '#ccc'
+                color: '#333'
             }
         },
         series: [
@@ -453,8 +453,8 @@ function initFlavorChart(elementId, data) {
         flavorChart.dispose();
     }
 
-    // Initialize chart
-    flavorChart = echarts.init(document.getElementById(elementId));
+    // Initialize chart with light theme
+    flavorChart = echarts.init(document.getElementById(elementId), 'light-theme');
 
     // Convert data to array format for ECharts
     const flavors = Object.keys(data);
@@ -469,7 +469,7 @@ function initFlavorChart(elementId, data) {
             text: 'Distribution of Five Flavors (五味)',
             left: 'center',
             textStyle: {
-                color: '#ccc'
+                color: '#333'
             }
         },
         tooltip: {
@@ -482,7 +482,7 @@ function initFlavorChart(elementId, data) {
             top: 'middle',
             data: flavors,
             textStyle: {
-                color: '#ccc'
+                color: '#333'
             }
         },
         series: [
@@ -536,8 +536,8 @@ function initMeridianChart(elementId, data) {
         meridianChart.dispose();
     }
 
-    // Initialize chart
-    meridianChart = echarts.init(document.getElementById(elementId));
+    // Initialize chart with light theme
+    meridianChart = echarts.init(document.getElementById(elementId), 'light-theme');
 
     // Convert data to array format for ECharts and sort
     const meridians = Object.keys(data);
@@ -559,7 +559,7 @@ function initMeridianChart(elementId, data) {
             text: 'Distribution of Meridians (归经)',
             left: 'center',
             textStyle: {
-                color: '#ccc'
+                color: '#333'
             }
         },
         tooltip: {
@@ -580,11 +580,11 @@ function initMeridianChart(elementId, data) {
             axisLabel: {
                 interval: 0,
                 rotate: 45,
-                color: '#ccc'
+                color: '#333'
             },
             axisLine: {
                 lineStyle: {
-                    color: '#ccc'
+                    color: '#333'
                 }
             }
         },
@@ -592,14 +592,14 @@ function initMeridianChart(elementId, data) {
             type: 'value',
             name: 'Count',
             nameTextStyle: {
-                color: '#ccc'
+                color: '#333'
             },
             axisLabel: {
-                color: '#ccc'
+                color: '#333'
             },
             axisLine: {
                 lineStyle: {
-                    color: '#ccc'
+                    color: '#333'
                 }
             }
         },
@@ -648,8 +648,8 @@ function initTopMaterialsChart(elementId, data) {
         topMaterialsChart.dispose();
     }
 
-    // Initialize chart
-    topMaterialsChart = echarts.init(document.getElementById(elementId));
+    // Initialize chart with light theme
+    topMaterialsChart = echarts.init(document.getElementById(elementId), 'light-theme');
 
     // Sort data by count in descending order
     data.sort((a, b) => b.count - a.count);
@@ -660,7 +660,7 @@ function initTopMaterialsChart(elementId, data) {
             text: 'Top Medicinal Materials by Efficacy',
             left: 'center',
             textStyle: {
-                color: '#ccc'
+                color: '#333'
             }
         },
         tooltip: {
@@ -681,11 +681,11 @@ function initTopMaterialsChart(elementId, data) {
             axisLabel: {
                 interval: 0,
                 rotate: 45,
-                color: '#ccc'
+                color: '#333'
             },
             axisLine: {
                 lineStyle: {
-                    color: '#ccc'
+                    color: '#333'
                 }
             }
         },
@@ -693,14 +693,14 @@ function initTopMaterialsChart(elementId, data) {
             type: 'value',
             name: 'Count',
             nameTextStyle: {
-                color: '#ccc'
+                color: '#333'
             },
             axisLabel: {
-                color: '#ccc'
+                color: '#333'
             },
             axisLine: {
                 lineStyle: {
-                    color: '#ccc'
+                    color: '#333'
                 }
             }
         },
@@ -742,18 +742,18 @@ function initTopMaterialsChart(elementId, data) {
  * @param {string} elementId - DOM element ID for the chart
  */
 function initMaterialClustering(elementId) {
-    const chart = echarts.init(document.getElementById(elementId));
-    
+    const chart = echarts.init(document.getElementById(elementId), 'light-theme');
+
     // Show loading animation first
     chart.showLoading();
-    
+
     // Fetch clustering data
     fetch('/api/material-clusters')
         .then(response => response.json())
         .then(data => {
             // Hide loading animation
             chart.hideLoading();
-            
+
             if (!data.success) {
                 chart.setOption({
                     title: {
@@ -766,10 +766,10 @@ function initMaterialClustering(elementId) {
                 });
                 return;
             }
-            
+
             const clusters = data.clusters;
             const series = [];
-            
+
             // Create a series for each cluster
             clusters.forEach(cluster => {
                 series.push({
@@ -792,14 +792,14 @@ function initMaterialClustering(elementId) {
                     }
                 });
             });
-            
+
             // Configure chart options
             const options = {
                 title: {
                     text: 'Material Clustering by Properties',
                     left: 'center',
                     textStyle: {
-                        color: '#ccc'
+                        color: '#333'
                     }
                 },
                 tooltip: {
@@ -813,7 +813,7 @@ function initMaterialClustering(elementId) {
                     data: series.map(s => s.name),
                     bottom: 10,
                     textStyle: {
-                        color: '#ccc'
+                        color: '#333'
                     }
                 },
                 grid: {
@@ -826,19 +826,19 @@ function initMaterialClustering(elementId) {
                     type: 'value',
                     name: 'Component 1',
                     nameTextStyle: {
-                        color: '#ccc'
+                        color: '#333'
                     },
                     axisLabel: {
-                        color: '#ccc'
+                        color: '#333'
                     },
                     axisLine: {
                         lineStyle: {
-                            color: '#ccc'
+                            color: '#333'
                         }
                     },
                     splitLine: {
                         lineStyle: {
-                            color: 'rgba(204, 204, 204, 0.1)'
+                            color: 'rgba(204, 204, 204, 0.5)'
                         }
                     }
                 },
@@ -846,25 +846,25 @@ function initMaterialClustering(elementId) {
                     type: 'value',
                     name: 'Component 2',
                     nameTextStyle: {
-                        color: '#ccc'
+                        color: '#333'
                     },
                     axisLabel: {
-                        color: '#ccc'
+                        color: '#333'
                     },
                     axisLine: {
                         lineStyle: {
-                            color: '#ccc'
+                            color: '#333'
                         }
                     },
                     splitLine: {
                         lineStyle: {
-                            color: 'rgba(204, 204, 204, 0.1)'
+                            color: 'rgba(204, 204, 204, 0.5)'
                         }
                     }
                 },
                 series: series
             };
-            
+
             // Set options and render chart
             chart.setOption(options);
         })
@@ -881,7 +881,7 @@ function initMaterialClustering(elementId) {
                 }
             });
         });
-    
+
     // Add resize event listener
     window.addEventListener('resize', () => {
         chart.resize();

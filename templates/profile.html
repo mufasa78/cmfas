@@ -1,0 +1,170 @@
+{% extends "layout_base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <div class="card shadow mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">
+                    <i class="fas fa-user-circle me-2"></i>{{ t('profile_info') }}
+                </h5>
+            </div>
+            <div class="card-body text-center">
+                <div class="mb-3">
+                    <div class="avatar-circle mx-auto">
+                        <span class="initials">{{ user.username[0]|upper }}</span>
+                    </div>
+                </div>
+                <h4>{{ user.username }}</h4>
+                <p class="text-muted">{{ user.email }}</p>
+                <p>
+                    <span class="badge bg-success">{{ t('active_user') }}</span>
+                    {% if user.is_admin %}
+                    <span class="badge bg-danger">{{ t('admin') }}</span>
+                    {% endif %}
+                </p>
+                <p class="text-muted">
+                    <small>{{ t('member_since') }}: {{ user.created_at.strftime('%Y-%m-%d') }}</small>
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-8">
+        <div class="card shadow mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">
+                    <i class="fas fa-cog me-2"></i>{{ t('account_settings') }}
+                </h5>
+            </div>
+            <div class="card-body">
+                <ul class="nav nav-tabs" id="profileTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="preferences-tab" data-bs-toggle="tab" data-bs-target="#preferences" type="button" role="tab" aria-controls="preferences" aria-selected="true">
+                            <i class="fas fa-sliders-h me-1"></i>{{ t('preferences') }}
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="security-tab" data-bs-toggle="tab" data-bs-target="#security" type="button" role="tab" aria-controls="security" aria-selected="false">
+                            <i class="fas fa-shield-alt me-1"></i>{{ t('security') }}
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="activity-tab" data-bs-toggle="tab" data-bs-target="#activity" type="button" role="tab" aria-controls="activity" aria-selected="false">
+                            <i class="fas fa-history me-1"></i>{{ t('activity') }}
+                        </button>
+                    </li>
+                </ul>
+                
+                <div class="tab-content p-3" id="profileTabsContent">
+                    <!-- Preferences Tab -->
+                    <div class="tab-pane fade show active" id="preferences" role="tabpanel" aria-labelledby="preferences-tab">
+                        <form method="POST" action="{{ url_for('update_preferences') }}">
+                            <div class="mb-3">
+                                <label for="language" class="form-label">{{ t('language') }}</label>
+                                <select class="form-select" id="language" name="language">
+                                    <option value="zh" {% if user.preferences.language == 'zh' %}selected{% endif %}>中文</option>
+                                    <option value="en" {% if user.preferences.language == 'en' %}selected{% endif %}>English</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="theme" class="form-label">{{ t('theme') }}</label>
+                                <select class="form-select" id="theme" name="theme">
+                                    <option value="light" {% if user.preferences.theme == 'light' %}selected{% endif %}>{{ t('light') }}</option>
+                                    <option value="dark" {% if user.preferences.theme == 'dark' %}selected{% endif %}>{{ t('dark') }}</option>
+                                </select>
+                            </div>
+                            
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save me-1"></i>{{ t('save_preferences') }}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Security Tab -->
+                    <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
+                        <form method="POST" action="{{ url_for('change_password') }}">
+                            <div class="mb-3">
+                                <label for="current_password" class="form-label">{{ t('current_password') }}</label>
+                                <input type="password" class="form-control" id="current_password" name="current_password" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="new_password" class="form-label">{{ t('new_password') }}</label>
+                                <input type="password" class="form-control" id="new_password" name="new_password" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="confirm_new_password" class="form-label">{{ t('confirm_new_password') }}</label>
+                                <input type="password" class="form-control" id="confirm_new_password" name="confirm_new_password" required>
+                            </div>
+                            
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-key me-1"></i>{{ t('change_password') }}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Activity Tab -->
+                    <div class="tab-pane fade" id="activity" role="tabpanel" aria-labelledby="activity-tab">
+                        {% if activities %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>{{ t('action') }}</th>
+                                        <th>{{ t('timestamp') }}</th>
+                                        <th>{{ t('details') }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for activity in activities %}
+                                    <tr>
+                                        <td>{{ activity.action }}</td>
+                                        <td>{{ activity.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                                        <td>{{ activity.details or '-' }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        {% else %}
+                        <div class="alert alert-info">
+                            {{ t('no_activity_records') }}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+    .avatar-circle {
+        width: 100px;
+        height: 100px;
+        background-color: #4CAF50;
+        text-align: center;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+    }
+
+    .initials {
+        position: relative;
+        top: 25px;
+        font-size: 50px;
+        line-height: 50px;
+        color: #fff;
+        font-weight: bold;
+    }
+</style>
+{% endblock %}

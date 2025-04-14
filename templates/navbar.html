@@ -1,14 +1,14 @@
 <!-- Navigation Bar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <!-- Brand Logo and Name -->
     <a class="navbar-brand d-flex align-items-center" href="{{ url_for('index') }}">
       <i class="fas fa-leaf me-2"></i>
       {{ t('site_title') }}
     </a>
-    
+
     <!-- Navbar Toggler for Mobile -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" 
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
             aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -18,15 +18,15 @@
       <!-- Main Navigation -->
       <div class="navbar-nav mx-auto">
         <!-- Dashboard -->
-        <a class="nav-item nav-link px-3 text-center {% if request.path == '/' %}active{% endif %}" 
+        <a class="nav-item nav-link px-3 text-center {% if request.path == '/' %}active{% endif %}"
            href="{{ url_for('index') }}">
           <i class="fas fa-home d-block mb-1"></i>
           <span>{{ t('dashboard') }}</span>
         </a>
-        
+
         <!-- Analytics Dropdown -->
         <div class="nav-item dropdown">
-          <a class="nav-link px-3 text-center dropdown-toggle {% if request.path in ['/province-stats', '/material-stats', '/property-distribution', '/top-prescriptions'] %}active{% endif %}" 
+          <a class="nav-link px-3 text-center dropdown-toggle {% if request.path in ['/province-stats', '/material-stats', '/property-distribution', '/top-prescriptions'] %}active{% endif %}"
              href="#" id="analyticsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fas fa-chart-bar d-block mb-1"></i>
             <span>{{ t('analytics') }}</span>
@@ -46,10 +46,10 @@
             </a>
           </div>
         </div>
-        
+
         <!-- Prescriptions Dropdown -->
         <div class="nav-item dropdown">
-          <a class="nav-link px-3 text-center dropdown-toggle {% if request.path in ['/prescription-entry', '/prescription-search'] %}active{% endif %}" 
+          <a class="nav-link px-3 text-center dropdown-toggle {% if request.path in ['/prescription-entry', '/prescription-search'] %}active{% endif %}"
              href="#" id="prescriptionsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fas fa-prescription d-block mb-1"></i>
             <span>{{ t('prescriptions') }}</span>
@@ -63,34 +63,64 @@
             </a>
           </div>
         </div>
-        
+
         <!-- Formula Optimization -->
-        <a class="nav-item nav-link px-3 text-center {% if request.path == '/formula-optimization' %}active{% endif %}" 
+        <a class="nav-item nav-link px-3 text-center {% if request.path == '/formula-optimization' %}active{% endif %}"
            href="{{ url_for('formula_optimization') }}">
           <i class="fas fa-robot d-block mb-1"></i>
           <span>{{ t('formula_optimization') }}</span>
         </a>
-        
+
         <!-- Knowledge Graph -->
-        <a class="nav-item nav-link px-3 text-center {% if request.path == '/knowledge-graph' %}active{% endif %}" 
+        <a class="nav-item nav-link px-3 text-center {% if request.path == '/knowledge-graph' %}active{% endif %}"
            href="{{ url_for('knowledge_graph') }}">
           <i class="fas fa-project-diagram d-block mb-1"></i>
           <span>{{ t('knowledge_graph') }}</span>
         </a>
-        
+
         <!-- Import Data -->
-        <a class="nav-item nav-link px-3 text-center {% if request.path == '/data-import' %}active{% endif %}" 
+        <a class="nav-item nav-link px-3 text-center {% if request.path == '/data-import' %}active{% endif %}"
            href="{{ url_for('data_import') }}">
           <i class="fas fa-file-import d-block mb-1"></i>
           <span>{{ t('import_data') }}</span>
         </a>
       </div>
-      
-      <!-- Language Switcher -->
+
+      <!-- Authentication and Language Switcher -->
       <div class="navbar-nav ms-auto">
+        {% if g.user %}
+        <!-- User Dropdown when logged in -->
+        <div class="nav-item dropdown">
+          <a class="nav-link px-3 text-center dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-user-circle d-block mb-1"></i>
+            <span>{{ g.user.username }}</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="{{ url_for('profile') }}">
+              <i class="fas fa-user me-2"></i> {{ t('profile') }}
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{ url_for('logout') }}">
+              <i class="fas fa-sign-out-alt me-2"></i> {{ t('logout') }}
+            </a>
+          </div>
+        </div>
+        {% else %}
+        <!-- Login/Register links when not logged in -->
+        <a class="nav-item nav-link px-3 text-center {% if request.path == '/login' %}active{% endif %}" href="{{ url_for('login') }}">
+          <i class="fas fa-sign-in-alt d-block mb-1"></i>
+          <span>{{ t('login') }}</span>
+        </a>
+        <a class="nav-item nav-link px-3 text-center {% if request.path == '/register' %}active{% endif %}" href="{{ url_for('register') }}">
+          <i class="fas fa-user-plus d-block mb-1"></i>
+          <span>{{ t('register') }}</span>
+        </a>
+        {% endif %}
+
+        <!-- Language Switcher -->
         <a class="nav-item nav-link px-3 text-center" href="{{ url_for('change_language', lang='en' if lang == 'zh' else 'zh') }}">
           <i class="fas fa-language d-block mb-1"></i>
-          <span>{{ 'English' if lang == 'zh' else '中文' }}</span>
+          <span>{{ '英文' if lang == 'zh' else '中文' }}</span>
         </a>
       </div>
     </div>

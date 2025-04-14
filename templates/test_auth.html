@@ -1,0 +1,41 @@
+{% extends "layout_base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">
+                    <i class="fas fa-user-check me-2"></i>Authentication Test
+                </h4>
+            </div>
+            <div class="card-body">
+                <h5>Current User</h5>
+                {% if g.user %}
+                <div class="alert alert-success">
+                    <p><strong>Username:</strong> {{ g.user.username }}</p>
+                    <p><strong>Email:</strong> {{ g.user.email }}</p>
+                    <p><strong>Admin:</strong> {{ g.user.is_admin }}</p>
+                    <p><strong>Active:</strong> {{ g.user.is_active }}</p>
+                </div>
+                <a href="{{ url_for('logout') }}" class="btn btn-danger">
+                    <i class="fas fa-sign-out-alt me-2"></i>Logout
+                </a>
+                {% else %}
+                <div class="alert alert-warning">
+                    <p>No user is currently logged in.</p>
+                </div>
+                <div class="d-grid gap-2">
+                    <a href="{{ url_for('login') }}" class="btn btn-primary">
+                        <i class="fas fa-sign-in-alt me-2"></i>Login
+                    </a>
+                    <a href="{{ url_for('register') }}" class="btn btn-success">
+                        <i class="fas fa-user-plus me-2"></i>Register
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

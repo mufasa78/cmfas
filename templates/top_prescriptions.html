@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "layout_base.html" %}
 
 {% block content %}
 <div class="row mb-4">
@@ -7,12 +7,13 @@
             <div class="card-header">
                 <div class="d-flex justify-content-between align-items-center">
                     <h5 class="mb-0">
-                        <i class="fas fa-list-ol me-2"></i>Top Prescriptions by Efficacy
+                        <i class="fas fa-list-ol me-2"></i>{{ t('top_prescriptions') }}
                     </h5>
-                    
+
                     <!-- Efficacy Category Selector -->
                     <form class="d-flex">
                         <select class="form-select" name="category" id="category-select" onchange="this.form.submit()">
+                            <option value="" disabled>{{ t('select_category') }}</option>
                             {% for category in categories %}
                                 <option value="{{ category.name }}" {% if category.name == selected_category %}selected{% endif %}>
                                     {{ category.name }}
@@ -24,20 +25,19 @@
             </div>
             <div class="card-body">
                 <p>
-                    Below are the top prescriptions that can be used for the efficacy: <strong>{{ selected_category }}</strong>.
-                    This analysis helps practitioners identify the most common formulations for specific therapeutic purposes.
+                    {{ t('top_prescriptions_for', selected_category)|safe }}
                 </p>
-                
+
                 {% if prescriptions %}
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Prescription Name</th>
-                                <th>Description</th>
-                                <th>Number of Materials</th>
-                                <th>Actions</th>
+                                <th>{{ t('prescription_name') }}</th>
+                                <th>{{ t('description') }}</th>
+                                <th>{{ t('medicinal_materials') }}</th>
+                                <th>{{ t('actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -49,13 +49,13 @@
                                     {% if prescription.description %}
                                         {{ prescription.description|truncate(100) }}
                                     {% else %}
-                                        <span class="text-muted">No description</span>
+                                        <span class="text-muted">{{ t('no_data_available') }}</span>
                                     {% endif %}
                                 </td>
                                 <td>{{ prescription.materials|length }}</td>
                                 <td>
                                     <a href="javascript:void(0)" onclick="loadPrescriptionDetails({{ prescription.id }})" class="btn btn-sm btn-outline-info">
-                                        <i class="fas fa-eye"></i> View
+                                        <i class="fas fa-eye"></i> {{ t('view_details') }}
                                     </a>
                                 </td>
                             </tr>
@@ -65,7 +65,7 @@
                 </div>
                 {% else %}
                 <div class="alert alert-info">
-                    <i class="fas fa-info-circle me-2"></i>No prescriptions found for this efficacy category.
+                    <i class="fas fa-info-circle me-2"></i>{{ t('no_results') }}
                 </div>
                 {% endif %}
             </div>
@@ -78,26 +78,25 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="mb-0">
-                    <i class="fas fa-leaf me-2"></i>Top Medicinal Materials for {{ selected_category }}
+                    <i class="fas fa-leaf me-2"></i>{{ t('top_materials_for', selected_category)|safe }}
                 </h5>
             </div>
             <div class="card-body">
                 <p>
-                    These are the most frequently used medicinal materials in prescriptions for {{ selected_category }}.
-                    Understanding which materials are commonly used for specific efficacies helps in formulation design.
+                    {{ t('top_materials_for', selected_category)|safe }}
                 </p>
-                
+
                 {% if materials %}
                 <div class="chart-container" id="top-materials-chart"></div>
-                
+
                 <div class="table-responsive mt-4">
                     <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Material Name</th>
-                                <th>Occurrence Count</th>
-                                <th>Percentage</th>
+                                <th>{{ t('material_name') }}</th>
+                                <th>{{ t('frequency') }}</th>
+                                <th>{{ t('percentage_column') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -115,7 +114,7 @@
                 </div>
                 {% else %}
                 <div class="alert alert-info">
-                    <i class="fas fa-info-circle me-2"></i>No material data available for this efficacy category.
+                    <i class="fas fa-info-circle me-2"></i>{{ t('no_data_available') }}
                 </div>
                 {% endif %}
             </div>
